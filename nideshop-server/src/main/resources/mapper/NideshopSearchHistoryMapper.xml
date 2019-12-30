@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopSearchHistoryMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopSearchHistory">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="keyword" jdbcType="CHAR" property="keyword"/>
+		<result column="from" jdbcType="VARCHAR" property="from"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+		<result column="user_id" jdbcType="VARCHAR" property="user_id"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_search_history
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,keyword,from,add_time,user_id
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			and keyword=#{keyword,jdbcType=CHAR}
+		</if>
+		<!--搜索来源，如PC、小程序、APP等-->
+		<if test="from != null and from != ''">
+			and from=#{from,jdbcType=VARCHAR}
+		</if>
+		<!--搜索时间-->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_id != null and user_id != ''">
+			and user_id=#{user_id,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			and keyword=#{keyword,jdbcType=CHAR}
+		</if>
+		<!--搜索来源，如PC、小程序、APP等-->
+		<if test="from != null and from != ''">
+			and from=#{from,jdbcType=VARCHAR}
+		</if>
+		<!--搜索时间-->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_id != null and user_id != ''">
+			and user_id=#{user_id,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopSearchHistory" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopSearchHistory" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopSearchHistory">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_search_history (
+			keyword,from,add_time,
+			user_id
+		)
+		values (
+			
+			#{keyword,jdbcType=CHAR},#{from,jdbcType=VARCHAR},#{add_time,jdbcType=INTEGER},
+			#{user_id,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopSearchHistory">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_search_history (
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			keyword=#{keyword,jdbcType=CHAR},
+		</if>
+		<!--搜索来源，如PC、小程序、APP等-->
+		<if test="from != null and from != ''">
+			from=#{from,jdbcType=VARCHAR},
+		</if>
+		<!--搜索时间-->
+		<if test="add_time != null">
+			add_time,
+		</if>
+		<!---->
+		<if test="user_id != null and user_id != ''">
+			user_id=#{user_id,jdbcType=VARCHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			keyword=#{keyword,jdbcType=CHAR},
+		</if>
+		<!--搜索来源，如PC、小程序、APP等-->
+		<if test="from != null and from != ''">
+			from=#{from,jdbcType=VARCHAR},
+		</if>
+		<!--搜索时间-->
+		<if test="add_time != null">
+			#{add_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="user_id != null and user_id != ''">
+			user_id=#{user_id,jdbcType=VARCHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_search_history (
+				keyword,from,add_time,
+				user_id
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.keyword,jdbcType=CHAR},#{item.from,jdbcType=VARCHAR},#{item.add_time,jdbcType=INTEGER},
+				#{item.user_id,jdbcType=VARCHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopSearchHistory" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopSearchHistory">
+		update nideshop_search_history
+		set  
+			keyword=#{keyword,jdbcType=CHAR},
+			from=#{from,jdbcType=VARCHAR},
+			add_time=#{add_time,jdbcType=INTEGER},
+			user_id=#{user_id,jdbcType=VARCHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopSearchHistory">
+		update nideshop_search_history
+		<set>
+			<!---->
+			<if test="keyword != null and keyword != ''">
+				keyword=#{keyword,jdbcType=CHAR},
+			</if>
+			<!--搜索来源，如PC、小程序、APP等-->
+			<if test="from != null and from != ''">
+				from=#{from,jdbcType=VARCHAR},
+			</if>
+			<!--搜索时间-->
+			<if test="add_time != null">
+				add_time=#{add_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="user_id != null and user_id != ''">
+				user_id=#{user_id,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_search_history(
+				keyword,from,add_time,
+				user_id
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.keyword,jdbcType=CHAR},#{item.from,jdbcType=VARCHAR},#{item.add_time,jdbcType=INTEGER},
+				#{item.user_id,jdbcType=VARCHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				keyword=#{keyword,jdbcType=CHAR},
+				from=#{from,jdbcType=VARCHAR},
+				add_time=#{add_time,jdbcType=INTEGER},
+				user_id=#{user_id,jdbcType=VARCHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_search_history
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" keyword = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.keyword!=null">
+							when id=#{item.keyword,jdbcType=INTEGER}
+							then #{item.keyword,jdbcType=CHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--搜索来源，如PC、小程序、APP等-->
+				<trim prefix=" from = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.from!=null">
+							when id=#{item.from,jdbcType=INTEGER}
+							then #{item.from,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--搜索时间-->
+				<trim prefix=" add_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.add_time!=null">
+							when id=#{item.add_time,jdbcType=INTEGER}
+							then #{item.add_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_id!=null">
+							when id=#{item.user_id,jdbcType=INTEGER}
+							then #{item.user_id,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_search_history
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopSearchHistory">
+		delete from nideshop_search_history
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopOrderMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopOrder">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="order_sn" jdbcType="VARCHAR" property="order_sn"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="order_status" jdbcType="TINYINT" property="order_status"/>
+		<result column="shipping_status" jdbcType="TINYINT" property="shipping_status"/>
+		<result column="pay_status" jdbcType="TINYINT" property="pay_status"/>
+		<result column="consignee" jdbcType="VARCHAR" property="consignee"/>
+		<result column="country" jdbcType="SMALLINT" property="country"/>
+		<result column="province" jdbcType="SMALLINT" property="province"/>
+		<result column="city" jdbcType="SMALLINT" property="city"/>
+		<result column="district" jdbcType="SMALLINT" property="district"/>
+		<result column="address" jdbcType="VARCHAR" property="address"/>
+		<result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+		<result column="postscript" jdbcType="VARCHAR" property="postscript"/>
+		<result column="shipping_fee" jdbcType="DECIMAL" property="shipping_fee"/>
+		<result column="pay_name" jdbcType="VARCHAR" property="pay_name"/>
+		<result column="pay_id" jdbcType="TINYINT" property="pay_id"/>
+		<result column="actual_price" jdbcType="DECIMAL" property="actual_price"/>
+		<result column="integral" jdbcType="INTEGER" property="integral"/>
+		<result column="integral_money" jdbcType="DECIMAL" property="integral_money"/>
+		<result column="order_price" jdbcType="DECIMAL" property="order_price"/>
+		<result column="goods_price" jdbcType="DECIMAL" property="goods_price"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+		<result column="confirm_time" jdbcType="INTEGER" property="confirm_time"/>
+		<result column="pay_time" jdbcType="INTEGER" property="pay_time"/>
+		<result column="freight_price" jdbcType="INTEGER" property="freight_price"/>
+		<result column="coupon_id" jdbcType="INTEGER" property="coupon_id"/>
+		<result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
+		<result column="coupon_price" jdbcType="DECIMAL" property="coupon_price"/>
+		<result column="callback_status" jdbcType="CHAR" property="callback_status"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_order
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,order_sn,user_id,order_status,shipping_status,pay_status,consignee,country,province,city,district,
+		address,mobile,postscript,shipping_fee,pay_name,pay_id,actual_price,integral,integral_money,order_price,
+		goods_price,add_time,confirm_time,pay_time,freight_price,coupon_id,parent_id,coupon_price,
+		callback_status
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_sn != null and order_sn != ''">
+			and order_sn=#{order_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_status != null">
+			and order_status=#{order_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="shipping_status != null">
+			and shipping_status=#{shipping_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="pay_status != null">
+			and pay_status=#{pay_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="consignee != null and consignee != ''">
+			and consignee=#{consignee,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="country != null">
+			and country=#{country,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="province != null">
+			and province=#{province,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="city != null">
+			and city=#{city,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="district != null">
+			and district=#{district,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			and address=#{address,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="postscript != null and postscript != ''">
+			and postscript=#{postscript,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="shipping_fee != null">
+			and shipping_fee=#{shipping_fee,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="pay_name != null and pay_name != ''">
+			and pay_name=#{pay_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="pay_id != null">
+			and pay_id=#{pay_id,jdbcType=TINYINT}
+		</if>
+		<!--实际需要支付的金额-->
+		<if test="actual_price != null">
+			and actual_price=#{actual_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="integral != null">
+			and integral=#{integral,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="integral_money != null">
+			and integral_money=#{integral_money,jdbcType=DECIMAL}
+		</if>
+		<!--订单总价-->
+		<if test="order_price != null">
+			and order_price=#{order_price,jdbcType=DECIMAL}
+		</if>
+		<!--商品总价-->
+		<if test="goods_price != null">
+			and goods_price=#{goods_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="confirm_time != null">
+			and confirm_time=#{confirm_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="pay_time != null">
+			and pay_time=#{pay_time,jdbcType=INTEGER}
+		</if>
+		<!--配送费用-->
+		<if test="freight_price != null">
+			and freight_price=#{freight_price,jdbcType=INTEGER}
+		</if>
+		<!--使用的优惠券id-->
+		<if test="coupon_id != null">
+			and coupon_id=#{coupon_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="coupon_price != null">
+			and coupon_price=#{coupon_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="callback_status != null and callback_status != ''">
+			and callback_status=#{callback_status,jdbcType=CHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_sn != null and order_sn != ''">
+			and order_sn=#{order_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_status != null">
+			and order_status=#{order_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="shipping_status != null">
+			and shipping_status=#{shipping_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="pay_status != null">
+			and pay_status=#{pay_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="consignee != null and consignee != ''">
+			and consignee=#{consignee,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="country != null">
+			and country=#{country,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="province != null">
+			and province=#{province,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="city != null">
+			and city=#{city,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="district != null">
+			and district=#{district,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			and address=#{address,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="postscript != null and postscript != ''">
+			and postscript=#{postscript,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="shipping_fee != null">
+			and shipping_fee=#{shipping_fee,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="pay_name != null and pay_name != ''">
+			and pay_name=#{pay_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="pay_id != null">
+			and pay_id=#{pay_id,jdbcType=TINYINT}
+		</if>
+		<!--实际需要支付的金额-->
+		<if test="actual_price != null">
+			and actual_price=#{actual_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="integral != null">
+			and integral=#{integral,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="integral_money != null">
+			and integral_money=#{integral_money,jdbcType=DECIMAL}
+		</if>
+		<!--订单总价-->
+		<if test="order_price != null">
+			and order_price=#{order_price,jdbcType=DECIMAL}
+		</if>
+		<!--商品总价-->
+		<if test="goods_price != null">
+			and goods_price=#{goods_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="confirm_time != null">
+			and confirm_time=#{confirm_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="pay_time != null">
+			and pay_time=#{pay_time,jdbcType=INTEGER}
+		</if>
+		<!--配送费用-->
+		<if test="freight_price != null">
+			and freight_price=#{freight_price,jdbcType=INTEGER}
+		</if>
+		<!--使用的优惠券id-->
+		<if test="coupon_id != null">
+			and coupon_id=#{coupon_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="coupon_price != null">
+			and coupon_price=#{coupon_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="callback_status != null and callback_status != ''">
+			and callback_status=#{callback_status,jdbcType=CHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopOrder" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopOrder">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order (
+			order_sn,user_id,order_status,
+			shipping_status,pay_status,consignee,
+			country,province,city,
+			district,address,mobile,
+			postscript,shipping_fee,pay_name,
+			pay_id,actual_price,integral,
+			integral_money,order_price,goods_price,
+			add_time,confirm_time,pay_time,
+			freight_price,coupon_id,parent_id,
+			coupon_price,callback_status
+		)
+		values (
+			
+			#{order_sn,jdbcType=VARCHAR},#{user_id,jdbcType=INTEGER},#{order_status,jdbcType=TINYINT},
+			#{shipping_status,jdbcType=TINYINT},#{pay_status,jdbcType=TINYINT},#{consignee,jdbcType=VARCHAR},
+			#{country,jdbcType=SMALLINT},#{province,jdbcType=SMALLINT},#{city,jdbcType=SMALLINT},
+			#{district,jdbcType=SMALLINT},#{address,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},
+			#{postscript,jdbcType=VARCHAR},#{shipping_fee,jdbcType=DECIMAL},#{pay_name,jdbcType=VARCHAR},
+			#{pay_id,jdbcType=TINYINT},#{actual_price,jdbcType=DECIMAL},#{integral,jdbcType=INTEGER},
+			#{integral_money,jdbcType=DECIMAL},#{order_price,jdbcType=DECIMAL},#{goods_price,jdbcType=DECIMAL},
+			#{add_time,jdbcType=INTEGER},#{confirm_time,jdbcType=INTEGER},#{pay_time,jdbcType=INTEGER},
+			#{freight_price,jdbcType=INTEGER},#{coupon_id,jdbcType=INTEGER},#{parent_id,jdbcType=INTEGER},
+			#{coupon_price,jdbcType=DECIMAL},#{callback_status,jdbcType=CHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopOrder">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order (
+		<!---->
+		<if test="order_sn != null and order_sn != ''">
+			order_sn=#{order_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_id != null">
+			user_id,
+		</if>
+		<!---->
+		<if test="order_status != null">
+			order_status,
+		</if>
+		<!---->
+		<if test="shipping_status != null">
+			shipping_status,
+		</if>
+		<!---->
+		<if test="pay_status != null">
+			pay_status,
+		</if>
+		<!---->
+		<if test="consignee != null and consignee != ''">
+			consignee=#{consignee,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="country != null">
+			country,
+		</if>
+		<!---->
+		<if test="province != null">
+			province,
+		</if>
+		<!---->
+		<if test="city != null">
+			city,
+		</if>
+		<!---->
+		<if test="district != null">
+			district,
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			address=#{address,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="postscript != null and postscript != ''">
+			postscript=#{postscript,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="shipping_fee != null">
+			shipping_fee,
+		</if>
+		<!---->
+		<if test="pay_name != null and pay_name != ''">
+			pay_name=#{pay_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="pay_id != null">
+			pay_id,
+		</if>
+		<!--实际需要支付的金额-->
+		<if test="actual_price != null">
+			actual_price,
+		</if>
+		<!---->
+		<if test="integral != null">
+			integral,
+		</if>
+		<!---->
+		<if test="integral_money != null">
+			integral_money,
+		</if>
+		<!--订单总价-->
+		<if test="order_price != null">
+			order_price,
+		</if>
+		<!--商品总价-->
+		<if test="goods_price != null">
+			goods_price,
+		</if>
+		<!---->
+		<if test="add_time != null">
+			add_time,
+		</if>
+		<!---->
+		<if test="confirm_time != null">
+			confirm_time,
+		</if>
+		<!---->
+		<if test="pay_time != null">
+			pay_time,
+		</if>
+		<!--配送费用-->
+		<if test="freight_price != null">
+			freight_price,
+		</if>
+		<!--使用的优惠券id-->
+		<if test="coupon_id != null">
+			coupon_id,
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			parent_id,
+		</if>
+		<!---->
+		<if test="coupon_price != null">
+			coupon_price,
+		</if>
+		<!---->
+		<if test="callback_status != null and callback_status != ''">
+			callback_status=#{callback_status,jdbcType=CHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="order_sn != null and order_sn != ''">
+			order_sn=#{order_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_id != null">
+			#{user_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="order_status != null">
+			#{order_status,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="shipping_status != null">
+			#{shipping_status,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="pay_status != null">
+			#{pay_status,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="consignee != null and consignee != ''">
+			consignee=#{consignee,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="country != null">
+			#{country,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="province != null">
+			#{province,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="city != null">
+			#{city,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="district != null">
+			#{district,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			address=#{address,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="postscript != null and postscript != ''">
+			postscript=#{postscript,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="shipping_fee != null">
+			#{shipping_fee,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="pay_name != null and pay_name != ''">
+			pay_name=#{pay_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="pay_id != null">
+			#{pay_id,jdbcType=TINYINT},
+		</if>
+		<!--实际需要支付的金额-->
+		<if test="actual_price != null">
+			#{actual_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="integral != null">
+			#{integral,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="integral_money != null">
+			#{integral_money,jdbcType=DECIMAL},
+		</if>
+		<!--订单总价-->
+		<if test="order_price != null">
+			#{order_price,jdbcType=DECIMAL},
+		</if>
+		<!--商品总价-->
+		<if test="goods_price != null">
+			#{goods_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="add_time != null">
+			#{add_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="confirm_time != null">
+			#{confirm_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="pay_time != null">
+			#{pay_time,jdbcType=INTEGER},
+		</if>
+		<!--配送费用-->
+		<if test="freight_price != null">
+			#{freight_price,jdbcType=INTEGER},
+		</if>
+		<!--使用的优惠券id-->
+		<if test="coupon_id != null">
+			#{coupon_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			#{parent_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="coupon_price != null">
+			#{coupon_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="callback_status != null and callback_status != ''">
+			callback_status=#{callback_status,jdbcType=CHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_order (
+				order_sn,user_id,order_status,
+				shipping_status,pay_status,consignee,
+				country,province,city,
+				district,address,mobile,
+				postscript,shipping_fee,pay_name,
+				pay_id,actual_price,integral,
+				integral_money,order_price,goods_price,
+				add_time,confirm_time,pay_time,
+				freight_price,coupon_id,parent_id,
+				coupon_price,callback_status
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_sn,jdbcType=VARCHAR},#{item.user_id,jdbcType=INTEGER},#{item.order_status,jdbcType=TINYINT},
+				#{item.shipping_status,jdbcType=TINYINT},#{item.pay_status,jdbcType=TINYINT},#{item.consignee,jdbcType=VARCHAR},
+				#{item.country,jdbcType=SMALLINT},#{item.province,jdbcType=SMALLINT},#{item.city,jdbcType=SMALLINT},
+				#{item.district,jdbcType=SMALLINT},#{item.address,jdbcType=VARCHAR},#{item.mobile,jdbcType=VARCHAR},
+				#{item.postscript,jdbcType=VARCHAR},#{item.shipping_fee,jdbcType=DECIMAL},#{item.pay_name,jdbcType=VARCHAR},
+				#{item.pay_id,jdbcType=TINYINT},#{item.actual_price,jdbcType=DECIMAL},#{item.integral,jdbcType=INTEGER},
+				#{item.integral_money,jdbcType=DECIMAL},#{item.order_price,jdbcType=DECIMAL},#{item.goods_price,jdbcType=DECIMAL},
+				#{item.add_time,jdbcType=INTEGER},#{item.confirm_time,jdbcType=INTEGER},#{item.pay_time,jdbcType=INTEGER},
+				#{item.freight_price,jdbcType=INTEGER},#{item.coupon_id,jdbcType=INTEGER},#{item.parent_id,jdbcType=INTEGER},
+				#{item.coupon_price,jdbcType=DECIMAL},#{item.callback_status,jdbcType=CHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrder" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrder">
+		update nideshop_order
+		set  
+			order_sn=#{order_sn,jdbcType=VARCHAR},
+			user_id=#{user_id,jdbcType=INTEGER},
+			order_status=#{order_status,jdbcType=TINYINT},
+			shipping_status=#{shipping_status,jdbcType=TINYINT},
+			pay_status=#{pay_status,jdbcType=TINYINT},
+			consignee=#{consignee,jdbcType=VARCHAR},
+			country=#{country,jdbcType=SMALLINT},
+			province=#{province,jdbcType=SMALLINT},
+			city=#{city,jdbcType=SMALLINT},
+			district=#{district,jdbcType=SMALLINT},
+			address=#{address,jdbcType=VARCHAR},
+			mobile=#{mobile,jdbcType=VARCHAR},
+			postscript=#{postscript,jdbcType=VARCHAR},
+			shipping_fee=#{shipping_fee,jdbcType=DECIMAL},
+			pay_name=#{pay_name,jdbcType=VARCHAR},
+			pay_id=#{pay_id,jdbcType=TINYINT},
+			actual_price=#{actual_price,jdbcType=DECIMAL},
+			integral=#{integral,jdbcType=INTEGER},
+			integral_money=#{integral_money,jdbcType=DECIMAL},
+			order_price=#{order_price,jdbcType=DECIMAL},
+			goods_price=#{goods_price,jdbcType=DECIMAL},
+			add_time=#{add_time,jdbcType=INTEGER},
+			confirm_time=#{confirm_time,jdbcType=INTEGER},
+			pay_time=#{pay_time,jdbcType=INTEGER},
+			freight_price=#{freight_price,jdbcType=INTEGER},
+			coupon_id=#{coupon_id,jdbcType=INTEGER},
+			parent_id=#{parent_id,jdbcType=INTEGER},
+			coupon_price=#{coupon_price,jdbcType=DECIMAL},
+			callback_status=#{callback_status,jdbcType=CHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrder">
+		update nideshop_order
+		<set>
+			<!---->
+			<if test="order_sn != null and order_sn != ''">
+				order_sn=#{order_sn,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="user_id != null">
+				user_id=#{user_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="order_status != null">
+				order_status=#{order_status,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="shipping_status != null">
+				shipping_status=#{shipping_status,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="pay_status != null">
+				pay_status=#{pay_status,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="consignee != null and consignee != ''">
+				consignee=#{consignee,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="country != null">
+				country=#{country,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="province != null">
+				province=#{province,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="city != null">
+				city=#{city,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="district != null">
+				district=#{district,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="address != null and address != ''">
+				address=#{address,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="mobile != null and mobile != ''">
+				mobile=#{mobile,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="postscript != null and postscript != ''">
+				postscript=#{postscript,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="shipping_fee != null">
+				shipping_fee=#{shipping_fee,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="pay_name != null and pay_name != ''">
+				pay_name=#{pay_name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="pay_id != null">
+				pay_id=#{pay_id,jdbcType=TINYINT},
+			</if>
+			<!--实际需要支付的金额-->
+			<if test="actual_price != null">
+				actual_price=#{actual_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="integral != null">
+				integral=#{integral,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="integral_money != null">
+				integral_money=#{integral_money,jdbcType=DECIMAL},
+			</if>
+			<!--订单总价-->
+			<if test="order_price != null">
+				order_price=#{order_price,jdbcType=DECIMAL},
+			</if>
+			<!--商品总价-->
+			<if test="goods_price != null">
+				goods_price=#{goods_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="add_time != null">
+				add_time=#{add_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="confirm_time != null">
+				confirm_time=#{confirm_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="pay_time != null">
+				pay_time=#{pay_time,jdbcType=INTEGER},
+			</if>
+			<!--配送费用-->
+			<if test="freight_price != null">
+				freight_price=#{freight_price,jdbcType=INTEGER},
+			</if>
+			<!--使用的优惠券id-->
+			<if test="coupon_id != null">
+				coupon_id=#{coupon_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="parent_id != null">
+				parent_id=#{parent_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="coupon_price != null">
+				coupon_price=#{coupon_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="callback_status != null and callback_status != ''">
+				callback_status=#{callback_status,jdbcType=CHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_order(
+				order_sn,user_id,order_status,
+				shipping_status,pay_status,consignee,
+				country,province,city,
+				district,address,mobile,
+				postscript,shipping_fee,pay_name,
+				pay_id,actual_price,integral,
+				integral_money,order_price,goods_price,
+				add_time,confirm_time,pay_time,
+				freight_price,coupon_id,parent_id,
+				coupon_price,callback_status
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_sn,jdbcType=VARCHAR},#{item.user_id,jdbcType=INTEGER},#{item.order_status,jdbcType=TINYINT},
+				#{item.shipping_status,jdbcType=TINYINT},#{item.pay_status,jdbcType=TINYINT},#{item.consignee,jdbcType=VARCHAR},
+				#{item.country,jdbcType=SMALLINT},#{item.province,jdbcType=SMALLINT},#{item.city,jdbcType=SMALLINT},
+				#{item.district,jdbcType=SMALLINT},#{item.address,jdbcType=VARCHAR},#{item.mobile,jdbcType=VARCHAR},
+				#{item.postscript,jdbcType=VARCHAR},#{item.shipping_fee,jdbcType=DECIMAL},#{item.pay_name,jdbcType=VARCHAR},
+				#{item.pay_id,jdbcType=TINYINT},#{item.actual_price,jdbcType=DECIMAL},#{item.integral,jdbcType=INTEGER},
+				#{item.integral_money,jdbcType=DECIMAL},#{item.order_price,jdbcType=DECIMAL},#{item.goods_price,jdbcType=DECIMAL},
+				#{item.add_time,jdbcType=INTEGER},#{item.confirm_time,jdbcType=INTEGER},#{item.pay_time,jdbcType=INTEGER},
+				#{item.freight_price,jdbcType=INTEGER},#{item.coupon_id,jdbcType=INTEGER},#{item.parent_id,jdbcType=INTEGER},
+				#{item.coupon_price,jdbcType=DECIMAL},#{item.callback_status,jdbcType=CHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				order_sn=#{order_sn,jdbcType=VARCHAR},
+				user_id=#{user_id,jdbcType=INTEGER},
+				order_status=#{order_status,jdbcType=TINYINT},
+				shipping_status=#{shipping_status,jdbcType=TINYINT},
+				pay_status=#{pay_status,jdbcType=TINYINT},
+				consignee=#{consignee,jdbcType=VARCHAR},
+				country=#{country,jdbcType=SMALLINT},
+				province=#{province,jdbcType=SMALLINT},
+				city=#{city,jdbcType=SMALLINT},
+				district=#{district,jdbcType=SMALLINT},
+				address=#{address,jdbcType=VARCHAR},
+				mobile=#{mobile,jdbcType=VARCHAR},
+				postscript=#{postscript,jdbcType=VARCHAR},
+				shipping_fee=#{shipping_fee,jdbcType=DECIMAL},
+				pay_name=#{pay_name,jdbcType=VARCHAR},
+				pay_id=#{pay_id,jdbcType=TINYINT},
+				actual_price=#{actual_price,jdbcType=DECIMAL},
+				integral=#{integral,jdbcType=INTEGER},
+				integral_money=#{integral_money,jdbcType=DECIMAL},
+				order_price=#{order_price,jdbcType=DECIMAL},
+				goods_price=#{goods_price,jdbcType=DECIMAL},
+				add_time=#{add_time,jdbcType=INTEGER},
+				confirm_time=#{confirm_time,jdbcType=INTEGER},
+				pay_time=#{pay_time,jdbcType=INTEGER},
+				freight_price=#{freight_price,jdbcType=INTEGER},
+				coupon_id=#{coupon_id,jdbcType=INTEGER},
+				parent_id=#{parent_id,jdbcType=INTEGER},
+				coupon_price=#{coupon_price,jdbcType=DECIMAL},
+				callback_status=#{callback_status,jdbcType=CHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_order
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" order_sn = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_sn!=null">
+							when id=#{item.order_sn,jdbcType=INTEGER}
+							then #{item.order_sn,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_id!=null">
+							when id=#{item.user_id,jdbcType=INTEGER}
+							then #{item.user_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" order_status = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_status!=null">
+							when id=#{item.order_status,jdbcType=INTEGER}
+							then #{item.order_status,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" shipping_status = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.shipping_status!=null">
+							when id=#{item.shipping_status,jdbcType=INTEGER}
+							then #{item.shipping_status,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" pay_status = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.pay_status!=null">
+							when id=#{item.pay_status,jdbcType=INTEGER}
+							then #{item.pay_status,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" consignee = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.consignee!=null">
+							when id=#{item.consignee,jdbcType=INTEGER}
+							then #{item.consignee,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" country = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.country!=null">
+							when id=#{item.country,jdbcType=INTEGER}
+							then #{item.country,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" province = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.province!=null">
+							when id=#{item.province,jdbcType=INTEGER}
+							then #{item.province,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" city = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.city!=null">
+							when id=#{item.city,jdbcType=INTEGER}
+							then #{item.city,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" district = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.district!=null">
+							when id=#{item.district,jdbcType=INTEGER}
+							then #{item.district,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" address = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.address!=null">
+							when id=#{item.address,jdbcType=INTEGER}
+							then #{item.address,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" mobile = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.mobile!=null">
+							when id=#{item.mobile,jdbcType=INTEGER}
+							then #{item.mobile,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" postscript = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.postscript!=null">
+							when id=#{item.postscript,jdbcType=INTEGER}
+							then #{item.postscript,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" shipping_fee = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.shipping_fee!=null">
+							when id=#{item.shipping_fee,jdbcType=INTEGER}
+							then #{item.shipping_fee,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" pay_name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.pay_name!=null">
+							when id=#{item.pay_name,jdbcType=INTEGER}
+							then #{item.pay_name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" pay_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.pay_id!=null">
+							when id=#{item.pay_id,jdbcType=INTEGER}
+							then #{item.pay_id,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!--实际需要支付的金额-->
+				<trim prefix=" actual_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.actual_price!=null">
+							when id=#{item.actual_price,jdbcType=INTEGER}
+							then #{item.actual_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" integral = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.integral!=null">
+							when id=#{item.integral,jdbcType=INTEGER}
+							then #{item.integral,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" integral_money = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.integral_money!=null">
+							when id=#{item.integral_money,jdbcType=INTEGER}
+							then #{item.integral_money,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!--订单总价-->
+				<trim prefix=" order_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_price!=null">
+							when id=#{item.order_price,jdbcType=INTEGER}
+							then #{item.order_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!--商品总价-->
+				<trim prefix=" goods_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_price!=null">
+							when id=#{item.goods_price,jdbcType=INTEGER}
+							then #{item.goods_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" add_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.add_time!=null">
+							when id=#{item.add_time,jdbcType=INTEGER}
+							then #{item.add_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" confirm_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.confirm_time!=null">
+							when id=#{item.confirm_time,jdbcType=INTEGER}
+							then #{item.confirm_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" pay_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.pay_time!=null">
+							when id=#{item.pay_time,jdbcType=INTEGER}
+							then #{item.pay_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--配送费用-->
+				<trim prefix=" freight_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.freight_price!=null">
+							when id=#{item.freight_price,jdbcType=INTEGER}
+							then #{item.freight_price,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--使用的优惠券id-->
+				<trim prefix=" coupon_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.coupon_id!=null">
+							when id=#{item.coupon_id,jdbcType=INTEGER}
+							then #{item.coupon_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" parent_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.parent_id!=null">
+							when id=#{item.parent_id,jdbcType=INTEGER}
+							then #{item.parent_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" coupon_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.coupon_price!=null">
+							when id=#{item.coupon_price,jdbcType=INTEGER}
+							then #{item.coupon_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" callback_status = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.callback_status!=null">
+							when id=#{item.callback_status,jdbcType=INTEGER}
+							then #{item.callback_status,jdbcType=CHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_order
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopOrder">
+		delete from nideshop_order
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

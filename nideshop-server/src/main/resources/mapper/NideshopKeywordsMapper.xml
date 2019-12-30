@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--热闹关键词表-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopKeywordsMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopKeywords">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="keyword" jdbcType="VARCHAR" property="keyword"/>
+		<result column="is_hot" jdbcType="TINYINT" property="is_hot"/>
+		<result column="is_default" jdbcType="TINYINT" property="is_default"/>
+		<result column="is_show" jdbcType="TINYINT" property="is_show"/>
+		<result column="sort_order" jdbcType="INTEGER" property="sort_order"/>
+		<result column="scheme_url" jdbcType="VARCHAR" property="scheme_url"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_keywords
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,type,keyword,is_hot,is_default,is_show,sort_order,scheme_url
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			and keyword=#{keyword,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			and is_hot=#{is_hot,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_default != null">
+			and is_default=#{is_default,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=INTEGER}
+		</if>
+		<!--关键词的跳转链接-->
+		<if test="scheme_url != null and scheme_url != ''">
+			and scheme_url=#{scheme_url,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			and keyword=#{keyword,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			and is_hot=#{is_hot,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_default != null">
+			and is_default=#{is_default,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=INTEGER}
+		</if>
+		<!--关键词的跳转链接-->
+		<if test="scheme_url != null and scheme_url != ''">
+			and scheme_url=#{scheme_url,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopKeywords" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopKeywords" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopKeywords">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_keywords (
+			type,keyword,is_hot,
+			is_default,is_show,sort_order,
+			scheme_url
+		)
+		values (
+			
+			#{type,jdbcType=INTEGER},#{keyword,jdbcType=VARCHAR},#{is_hot,jdbcType=TINYINT},
+			#{is_default,jdbcType=TINYINT},#{is_show,jdbcType=TINYINT},#{sort_order,jdbcType=INTEGER},
+			#{scheme_url,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopKeywords">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_keywords (
+		<!---->
+		<if test="type != null">
+			type,
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			keyword=#{keyword,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			is_hot,
+		</if>
+		<!---->
+		<if test="is_default != null">
+			is_default,
+		</if>
+		<!---->
+		<if test="is_show != null">
+			is_show,
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			sort_order,
+		</if>
+		<!--关键词的跳转链接-->
+		<if test="scheme_url != null and scheme_url != ''">
+			scheme_url=#{scheme_url,jdbcType=VARCHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="type != null">
+			#{type,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="keyword != null and keyword != ''">
+			keyword=#{keyword,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			#{is_hot,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="is_default != null">
+			#{is_default,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="is_show != null">
+			#{is_show,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			#{sort_order,jdbcType=INTEGER},
+		</if>
+		<!--关键词的跳转链接-->
+		<if test="scheme_url != null and scheme_url != ''">
+			scheme_url=#{scheme_url,jdbcType=VARCHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_keywords (
+				type,keyword,is_hot,
+				is_default,is_show,sort_order,
+				scheme_url
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.type,jdbcType=INTEGER},#{item.keyword,jdbcType=VARCHAR},#{item.is_hot,jdbcType=TINYINT},
+				#{item.is_default,jdbcType=TINYINT},#{item.is_show,jdbcType=TINYINT},#{item.sort_order,jdbcType=INTEGER},
+				#{item.scheme_url,jdbcType=VARCHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopKeywords" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopKeywords">
+		update nideshop_keywords
+		set  
+			type=#{type,jdbcType=INTEGER},
+			keyword=#{keyword,jdbcType=VARCHAR},
+			is_hot=#{is_hot,jdbcType=TINYINT},
+			is_default=#{is_default,jdbcType=TINYINT},
+			is_show=#{is_show,jdbcType=TINYINT},
+			sort_order=#{sort_order,jdbcType=INTEGER},
+			scheme_url=#{scheme_url,jdbcType=VARCHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--热闹关键词表更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopKeywords">
+		update nideshop_keywords
+		<set>
+			<!---->
+			<if test="type != null">
+				type=#{type,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="keyword != null and keyword != ''">
+				keyword=#{keyword,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="is_hot != null">
+				is_hot=#{is_hot,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="is_default != null">
+				is_default=#{is_default,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="is_show != null">
+				is_show=#{is_show,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="sort_order != null">
+				sort_order=#{sort_order,jdbcType=INTEGER},
+			</if>
+			<!--关键词的跳转链接-->
+			<if test="scheme_url != null and scheme_url != ''">
+				scheme_url=#{scheme_url,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--热闹关键词表批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_keywords(
+				type,keyword,is_hot,
+				is_default,is_show,sort_order,
+				scheme_url
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.type,jdbcType=INTEGER},#{item.keyword,jdbcType=VARCHAR},#{item.is_hot,jdbcType=TINYINT},
+				#{item.is_default,jdbcType=TINYINT},#{item.is_show,jdbcType=TINYINT},#{item.sort_order,jdbcType=INTEGER},
+				#{item.scheme_url,jdbcType=VARCHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				type=#{type,jdbcType=INTEGER},
+				keyword=#{keyword,jdbcType=VARCHAR},
+				is_hot=#{is_hot,jdbcType=TINYINT},
+				is_default=#{is_default,jdbcType=TINYINT},
+				is_show=#{is_show,jdbcType=TINYINT},
+				sort_order=#{sort_order,jdbcType=INTEGER},
+				scheme_url=#{scheme_url,jdbcType=VARCHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_keywords
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.type!=null">
+							when id=#{item.type,jdbcType=INTEGER}
+							then #{item.type,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" keyword = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.keyword!=null">
+							when id=#{item.keyword,jdbcType=INTEGER}
+							then #{item.keyword,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_hot = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_hot!=null">
+							when id=#{item.is_hot,jdbcType=INTEGER}
+							then #{item.is_hot,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_default = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_default!=null">
+							when id=#{item.is_default,jdbcType=INTEGER}
+							then #{item.is_default,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_show = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_show!=null">
+							when id=#{item.is_show,jdbcType=INTEGER}
+							then #{item.is_show,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sort_order!=null">
+							when id=#{item.sort_order,jdbcType=INTEGER}
+							then #{item.sort_order,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--关键词的跳转链接-->
+				<trim prefix=" scheme_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.scheme_url!=null">
+							when id=#{item.scheme_url,jdbcType=INTEGER}
+							then #{item.scheme_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_keywords
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopKeywords">
+		delete from nideshop_keywords
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

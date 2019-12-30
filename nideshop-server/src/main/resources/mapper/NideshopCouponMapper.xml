@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopCouponMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopCoupon">
+		<id column="id" jdbcType="SMALLINT" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="type_money" jdbcType="DECIMAL" property="type_money"/>
+		<result column="send_type" jdbcType="TINYINT" property="send_type"/>
+		<result column="min_amount" jdbcType="DECIMAL" property="min_amount"/>
+		<result column="max_amount" jdbcType="DECIMAL" property="max_amount"/>
+		<result column="send_start_date" jdbcType="INTEGER" property="send_start_date"/>
+		<result column="send_end_date" jdbcType="INTEGER" property="send_end_date"/>
+		<result column="use_start_date" jdbcType="INTEGER" property="use_start_date"/>
+		<result column="use_end_date" jdbcType="INTEGER" property="use_end_date"/>
+		<result column="min_goods_amount" jdbcType="DECIMAL" property="min_goods_amount"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_coupon
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,name,type_money,send_type,min_amount,max_amount,send_start_date,send_end_date,use_start_date,use_end_date,
+		min_goods_amount
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type_money != null">
+			and type_money=#{type_money,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="send_type != null">
+			and send_type=#{send_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="min_amount != null">
+			and min_amount=#{min_amount,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="max_amount != null">
+			and max_amount=#{max_amount,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="send_start_date != null">
+			and send_start_date=#{send_start_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="send_end_date != null">
+			and send_end_date=#{send_end_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="use_start_date != null">
+			and use_start_date=#{use_start_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="use_end_date != null">
+			and use_end_date=#{use_end_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="min_goods_amount != null">
+			and min_goods_amount=#{min_goods_amount,jdbcType=DECIMAL}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type_money != null">
+			and type_money=#{type_money,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="send_type != null">
+			and send_type=#{send_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="min_amount != null">
+			and min_amount=#{min_amount,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="max_amount != null">
+			and max_amount=#{max_amount,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="send_start_date != null">
+			and send_start_date=#{send_start_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="send_end_date != null">
+			and send_end_date=#{send_end_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="use_start_date != null">
+			and use_start_date=#{use_start_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="use_end_date != null">
+			and use_end_date=#{use_end_date,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="min_goods_amount != null">
+			and min_goods_amount=#{min_goods_amount,jdbcType=DECIMAL}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopCoupon" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopCoupon" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopCoupon">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_coupon (
+			name,type_money,send_type,
+			min_amount,max_amount,send_start_date,
+			send_end_date,use_start_date,use_end_date,
+			min_goods_amount
+		)
+		values (
+			
+			#{name,jdbcType=VARCHAR},#{type_money,jdbcType=DECIMAL},#{send_type,jdbcType=TINYINT},
+			#{min_amount,jdbcType=DECIMAL},#{max_amount,jdbcType=DECIMAL},#{send_start_date,jdbcType=INTEGER},
+			#{send_end_date,jdbcType=INTEGER},#{use_start_date,jdbcType=INTEGER},#{use_end_date,jdbcType=INTEGER},
+			#{min_goods_amount,jdbcType=DECIMAL}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopCoupon">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_coupon (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type_money != null">
+			type_money,
+		</if>
+		<!---->
+		<if test="send_type != null">
+			send_type,
+		</if>
+		<!---->
+		<if test="min_amount != null">
+			min_amount,
+		</if>
+		<!---->
+		<if test="max_amount != null">
+			max_amount,
+		</if>
+		<!---->
+		<if test="send_start_date != null">
+			send_start_date,
+		</if>
+		<!---->
+		<if test="send_end_date != null">
+			send_end_date,
+		</if>
+		<!---->
+		<if test="use_start_date != null">
+			use_start_date,
+		</if>
+		<!---->
+		<if test="use_end_date != null">
+			use_end_date,
+		</if>
+		<!---->
+		<if test="min_goods_amount != null">
+			min_goods_amount,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type_money != null">
+			#{type_money,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="send_type != null">
+			#{send_type,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="min_amount != null">
+			#{min_amount,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="max_amount != null">
+			#{max_amount,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="send_start_date != null">
+			#{send_start_date,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="send_end_date != null">
+			#{send_end_date,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="use_start_date != null">
+			#{use_start_date,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="use_end_date != null">
+			#{use_end_date,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="min_goods_amount != null">
+			#{min_goods_amount,jdbcType=DECIMAL},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_coupon (
+				name,type_money,send_type,
+				min_amount,max_amount,send_start_date,
+				send_end_date,use_start_date,use_end_date,
+				min_goods_amount
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.type_money,jdbcType=DECIMAL},#{item.send_type,jdbcType=TINYINT},
+				#{item.min_amount,jdbcType=DECIMAL},#{item.max_amount,jdbcType=DECIMAL},#{item.send_start_date,jdbcType=INTEGER},
+				#{item.send_end_date,jdbcType=INTEGER},#{item.use_start_date,jdbcType=INTEGER},#{item.use_end_date,jdbcType=INTEGER},
+				#{item.min_goods_amount,jdbcType=DECIMAL}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCoupon" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCoupon">
+		update nideshop_coupon
+		set  
+			name=#{name,jdbcType=VARCHAR},
+			type_money=#{type_money,jdbcType=DECIMAL},
+			send_type=#{send_type,jdbcType=TINYINT},
+			min_amount=#{min_amount,jdbcType=DECIMAL},
+			max_amount=#{max_amount,jdbcType=DECIMAL},
+			send_start_date=#{send_start_date,jdbcType=INTEGER},
+			send_end_date=#{send_end_date,jdbcType=INTEGER},
+			use_start_date=#{use_start_date,jdbcType=INTEGER},
+			use_end_date=#{use_end_date,jdbcType=INTEGER},
+			min_goods_amount=#{min_goods_amount,jdbcType=DECIMAL}
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCoupon">
+		update nideshop_coupon
+		<set>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="type_money != null">
+				type_money=#{type_money,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="send_type != null">
+				send_type=#{send_type,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="min_amount != null">
+				min_amount=#{min_amount,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="max_amount != null">
+				max_amount=#{max_amount,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="send_start_date != null">
+				send_start_date=#{send_start_date,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="send_end_date != null">
+				send_end_date=#{send_end_date,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="use_start_date != null">
+				use_start_date=#{use_start_date,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="use_end_date != null">
+				use_end_date=#{use_end_date,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="min_goods_amount != null">
+				min_goods_amount=#{min_goods_amount,jdbcType=DECIMAL},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_coupon(
+				name,type_money,send_type,
+				min_amount,max_amount,send_start_date,
+				send_end_date,use_start_date,use_end_date,
+				min_goods_amount
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.type_money,jdbcType=DECIMAL},#{item.send_type,jdbcType=TINYINT},
+				#{item.min_amount,jdbcType=DECIMAL},#{item.max_amount,jdbcType=DECIMAL},#{item.send_start_date,jdbcType=INTEGER},
+				#{item.send_end_date,jdbcType=INTEGER},#{item.use_start_date,jdbcType=INTEGER},#{item.use_end_date,jdbcType=INTEGER},
+				#{item.min_goods_amount,jdbcType=DECIMAL})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				name=#{name,jdbcType=VARCHAR},
+				type_money=#{type_money,jdbcType=DECIMAL},
+				send_type=#{send_type,jdbcType=TINYINT},
+				min_amount=#{min_amount,jdbcType=DECIMAL},
+				max_amount=#{max_amount,jdbcType=DECIMAL},
+				send_start_date=#{send_start_date,jdbcType=INTEGER},
+				send_end_date=#{send_end_date,jdbcType=INTEGER},
+				use_start_date=#{use_start_date,jdbcType=INTEGER},
+				use_end_date=#{use_end_date,jdbcType=INTEGER},
+				min_goods_amount=#{min_goods_amount,jdbcType=DECIMAL}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_coupon
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=SMALLINT}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" type_money = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.type_money!=null">
+							when id=#{item.type_money,jdbcType=SMALLINT}
+							then #{item.type_money,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" send_type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.send_type!=null">
+							when id=#{item.send_type,jdbcType=SMALLINT}
+							then #{item.send_type,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" min_amount = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.min_amount!=null">
+							when id=#{item.min_amount,jdbcType=SMALLINT}
+							then #{item.min_amount,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" max_amount = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.max_amount!=null">
+							when id=#{item.max_amount,jdbcType=SMALLINT}
+							then #{item.max_amount,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" send_start_date = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.send_start_date!=null">
+							when id=#{item.send_start_date,jdbcType=SMALLINT}
+							then #{item.send_start_date,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" send_end_date = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.send_end_date!=null">
+							when id=#{item.send_end_date,jdbcType=SMALLINT}
+							then #{item.send_end_date,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" use_start_date = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.use_start_date!=null">
+							when id=#{item.use_start_date,jdbcType=SMALLINT}
+							then #{item.use_start_date,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" use_end_date = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.use_end_date!=null">
+							when id=#{item.use_end_date,jdbcType=SMALLINT}
+							then #{item.use_end_date,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" min_goods_amount = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.min_goods_amount!=null">
+							when id=#{item.min_goods_amount,jdbcType=SMALLINT}
+							then #{item.min_goods_amount,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=SMALLINT}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_coupon
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopCoupon">
+		delete from nideshop_coupon
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

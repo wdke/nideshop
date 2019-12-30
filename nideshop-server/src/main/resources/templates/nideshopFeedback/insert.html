@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>新增</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/feedback/insert}" method="post">
+		<div class="form-group">
+			<label for="msg_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_id" id="msg_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="parent_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="parent_id" id="parent_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_id" id="user_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_name" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_name" id="user_name"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_email" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_email" id="user_email"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_title" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_title" id="msg_title"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_type" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_type" id="msg_type"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_status" id="msg_status"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_content" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_content" id="msg_content"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_time" id="msg_time"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="message_img" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="message_img" id="message_img"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="order_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="order_id" id="order_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="msg_area" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="msg_area" id="msg_area"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

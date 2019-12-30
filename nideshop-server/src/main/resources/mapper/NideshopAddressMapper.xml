@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopAddressMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopAddress">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="country_id" jdbcType="SMALLINT" property="country_id"/>
+		<result column="province_id" jdbcType="SMALLINT" property="province_id"/>
+		<result column="city_id" jdbcType="SMALLINT" property="city_id"/>
+		<result column="district_id" jdbcType="SMALLINT" property="district_id"/>
+		<result column="address" jdbcType="VARCHAR" property="address"/>
+		<result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+		<result column="is_default" jdbcType="TINYINT" property="is_default"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_address
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,name,user_id,country_id,province_id,city_id,district_id,address,mobile,is_default
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="country_id != null">
+			and country_id=#{country_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="province_id != null">
+			and province_id=#{province_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="city_id != null">
+			and city_id=#{city_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="district_id != null">
+			and district_id=#{district_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			and address=#{address,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_default != null">
+			and is_default=#{is_default,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="country_id != null">
+			and country_id=#{country_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="province_id != null">
+			and province_id=#{province_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="city_id != null">
+			and city_id=#{city_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="district_id != null">
+			and district_id=#{district_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			and address=#{address,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_default != null">
+			and is_default=#{is_default,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopAddress" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopAddress" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopAddress">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_address (
+			name,user_id,country_id,
+			province_id,city_id,district_id,
+			address,mobile,is_default
+		)
+		values (
+			
+			#{name,jdbcType=VARCHAR},#{user_id,jdbcType=INTEGER},#{country_id,jdbcType=SMALLINT},
+			#{province_id,jdbcType=SMALLINT},#{city_id,jdbcType=SMALLINT},#{district_id,jdbcType=SMALLINT},
+			#{address,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{is_default,jdbcType=TINYINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopAddress">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_address (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_id != null">
+			user_id,
+		</if>
+		<!---->
+		<if test="country_id != null">
+			country_id,
+		</if>
+		<!---->
+		<if test="province_id != null">
+			province_id,
+		</if>
+		<!---->
+		<if test="city_id != null">
+			city_id,
+		</if>
+		<!---->
+		<if test="district_id != null">
+			district_id,
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			address=#{address,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_default != null">
+			is_default,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_id != null">
+			#{user_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="country_id != null">
+			#{country_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="province_id != null">
+			#{province_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="city_id != null">
+			#{city_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="district_id != null">
+			#{district_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="address != null and address != ''">
+			address=#{address,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_default != null">
+			#{is_default,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_address (
+				name,user_id,country_id,
+				province_id,city_id,district_id,
+				address,mobile,is_default
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.user_id,jdbcType=INTEGER},#{item.country_id,jdbcType=SMALLINT},
+				#{item.province_id,jdbcType=SMALLINT},#{item.city_id,jdbcType=SMALLINT},#{item.district_id,jdbcType=SMALLINT},
+				#{item.address,jdbcType=VARCHAR},#{item.mobile,jdbcType=VARCHAR},#{item.is_default,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAddress" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAddress">
+		update nideshop_address
+		set  
+			name=#{name,jdbcType=VARCHAR},
+			user_id=#{user_id,jdbcType=INTEGER},
+			country_id=#{country_id,jdbcType=SMALLINT},
+			province_id=#{province_id,jdbcType=SMALLINT},
+			city_id=#{city_id,jdbcType=SMALLINT},
+			district_id=#{district_id,jdbcType=SMALLINT},
+			address=#{address,jdbcType=VARCHAR},
+			mobile=#{mobile,jdbcType=VARCHAR},
+			is_default=#{is_default,jdbcType=TINYINT}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAddress">
+		update nideshop_address
+		<set>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="user_id != null">
+				user_id=#{user_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="country_id != null">
+				country_id=#{country_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="province_id != null">
+				province_id=#{province_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="city_id != null">
+				city_id=#{city_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="district_id != null">
+				district_id=#{district_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="address != null and address != ''">
+				address=#{address,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="mobile != null and mobile != ''">
+				mobile=#{mobile,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="is_default != null">
+				is_default=#{is_default,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_address(
+				name,user_id,country_id,
+				province_id,city_id,district_id,
+				address,mobile,is_default
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.user_id,jdbcType=INTEGER},#{item.country_id,jdbcType=SMALLINT},
+				#{item.province_id,jdbcType=SMALLINT},#{item.city_id,jdbcType=SMALLINT},#{item.district_id,jdbcType=SMALLINT},
+				#{item.address,jdbcType=VARCHAR},#{item.mobile,jdbcType=VARCHAR},#{item.is_default,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				name=#{name,jdbcType=VARCHAR},
+				user_id=#{user_id,jdbcType=INTEGER},
+				country_id=#{country_id,jdbcType=SMALLINT},
+				province_id=#{province_id,jdbcType=SMALLINT},
+				city_id=#{city_id,jdbcType=SMALLINT},
+				district_id=#{district_id,jdbcType=SMALLINT},
+				address=#{address,jdbcType=VARCHAR},
+				mobile=#{mobile,jdbcType=VARCHAR},
+				is_default=#{is_default,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_address
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=INTEGER}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_id!=null">
+							when id=#{item.user_id,jdbcType=INTEGER}
+							then #{item.user_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" country_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.country_id!=null">
+							when id=#{item.country_id,jdbcType=INTEGER}
+							then #{item.country_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" province_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.province_id!=null">
+							when id=#{item.province_id,jdbcType=INTEGER}
+							then #{item.province_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" city_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.city_id!=null">
+							when id=#{item.city_id,jdbcType=INTEGER}
+							then #{item.city_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" district_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.district_id!=null">
+							when id=#{item.district_id,jdbcType=INTEGER}
+							then #{item.district_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" address = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.address!=null">
+							when id=#{item.address,jdbcType=INTEGER}
+							then #{item.address,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" mobile = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.mobile!=null">
+							when id=#{item.mobile,jdbcType=INTEGER}
+							then #{item.mobile,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_default = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_default!=null">
+							when id=#{item.is_default,jdbcType=INTEGER}
+							then #{item.is_default,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_address
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopAddress">
+		delete from nideshop_address
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

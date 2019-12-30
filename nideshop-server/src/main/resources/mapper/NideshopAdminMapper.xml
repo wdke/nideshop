@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopAdminMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopAdmin">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="password" jdbcType="VARCHAR" property="password"/>
+		<result column="password_salt" jdbcType="VARCHAR" property="password_salt"/>
+		<result column="last_login_ip" jdbcType="VARCHAR" property="last_login_ip"/>
+		<result column="last_login_time" jdbcType="INTEGER" property="last_login_time"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+		<result column="update_time" jdbcType="INTEGER" property="update_time"/>
+		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+		<result column="admin_role_id" jdbcType="INTEGER" property="admin_role_id"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_admin
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,username,password,password_salt,last_login_ip,last_login_time,add_time,update_time,avatar,admin_role_id
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="username != null and username != ''">
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			and password=#{password,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password_salt != null and password_salt != ''">
+			and password_salt=#{password_salt,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			and last_login_ip=#{last_login_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			and last_login_time=#{last_login_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="update_time != null">
+			and update_time=#{update_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="admin_role_id != null">
+			and admin_role_id=#{admin_role_id,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="username != null and username != ''">
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			and password=#{password,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password_salt != null and password_salt != ''">
+			and password_salt=#{password_salt,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			and last_login_ip=#{last_login_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			and last_login_time=#{last_login_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="update_time != null">
+			and update_time=#{update_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="admin_role_id != null">
+			and admin_role_id=#{admin_role_id,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopAdmin" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopAdmin" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopAdmin">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_admin (
+			username,password,password_salt,
+			last_login_ip,last_login_time,add_time,
+			update_time,avatar,admin_role_id
+		)
+		values (
+			
+			#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{password_salt,jdbcType=VARCHAR},
+			#{last_login_ip,jdbcType=VARCHAR},#{last_login_time,jdbcType=INTEGER},#{add_time,jdbcType=INTEGER},
+			#{update_time,jdbcType=INTEGER},#{avatar,jdbcType=VARCHAR},#{admin_role_id,jdbcType=INTEGER}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopAdmin">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_admin (
+		<!---->
+		<if test="username != null and username != ''">
+			username=#{username,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			password=#{password,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password_salt != null and password_salt != ''">
+			password_salt=#{password_salt,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			last_login_time,
+		</if>
+		<!---->
+		<if test="add_time != null">
+			add_time,
+		</if>
+		<!---->
+		<if test="update_time != null">
+			update_time,
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="admin_role_id != null">
+			admin_role_id,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="username != null and username != ''">
+			username=#{username,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			password=#{password,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password_salt != null and password_salt != ''">
+			password_salt=#{password_salt,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			#{last_login_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="add_time != null">
+			#{add_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="update_time != null">
+			#{update_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="admin_role_id != null">
+			#{admin_role_id,jdbcType=INTEGER},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_admin (
+				username,password,password_salt,
+				last_login_ip,last_login_time,add_time,
+				update_time,avatar,admin_role_id
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.username,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR},#{item.password_salt,jdbcType=VARCHAR},
+				#{item.last_login_ip,jdbcType=VARCHAR},#{item.last_login_time,jdbcType=INTEGER},#{item.add_time,jdbcType=INTEGER},
+				#{item.update_time,jdbcType=INTEGER},#{item.avatar,jdbcType=VARCHAR},#{item.admin_role_id,jdbcType=INTEGER}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAdmin" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAdmin">
+		update nideshop_admin
+		set  
+			username=#{username,jdbcType=VARCHAR},
+			password=#{password,jdbcType=VARCHAR},
+			password_salt=#{password_salt,jdbcType=VARCHAR},
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+			last_login_time=#{last_login_time,jdbcType=INTEGER},
+			add_time=#{add_time,jdbcType=INTEGER},
+			update_time=#{update_time,jdbcType=INTEGER},
+			avatar=#{avatar,jdbcType=VARCHAR},
+			admin_role_id=#{admin_role_id,jdbcType=INTEGER}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAdmin">
+		update nideshop_admin
+		<set>
+			<!---->
+			<if test="username != null and username != ''">
+				username=#{username,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="password != null and password != ''">
+				password=#{password,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="password_salt != null and password_salt != ''">
+				password_salt=#{password_salt,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="last_login_ip != null and last_login_ip != ''">
+				last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="last_login_time != null">
+				last_login_time=#{last_login_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="add_time != null">
+				add_time=#{add_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="update_time != null">
+				update_time=#{update_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="avatar != null and avatar != ''">
+				avatar=#{avatar,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="admin_role_id != null">
+				admin_role_id=#{admin_role_id,jdbcType=INTEGER},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_admin(
+				username,password,password_salt,
+				last_login_ip,last_login_time,add_time,
+				update_time,avatar,admin_role_id
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.username,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR},#{item.password_salt,jdbcType=VARCHAR},
+				#{item.last_login_ip,jdbcType=VARCHAR},#{item.last_login_time,jdbcType=INTEGER},#{item.add_time,jdbcType=INTEGER},
+				#{item.update_time,jdbcType=INTEGER},#{item.avatar,jdbcType=VARCHAR},#{item.admin_role_id,jdbcType=INTEGER})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				username=#{username,jdbcType=VARCHAR},
+				password=#{password,jdbcType=VARCHAR},
+				password_salt=#{password_salt,jdbcType=VARCHAR},
+				last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+				last_login_time=#{last_login_time,jdbcType=INTEGER},
+				add_time=#{add_time,jdbcType=INTEGER},
+				update_time=#{update_time,jdbcType=INTEGER},
+				avatar=#{avatar,jdbcType=VARCHAR},
+				admin_role_id=#{admin_role_id,jdbcType=INTEGER}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_admin
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" username = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.username!=null">
+							when id=#{item.username,jdbcType=INTEGER}
+							then #{item.username,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" password = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.password!=null">
+							when id=#{item.password,jdbcType=INTEGER}
+							then #{item.password,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" password_salt = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.password_salt!=null">
+							when id=#{item.password_salt,jdbcType=INTEGER}
+							then #{item.password_salt,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" last_login_ip = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.last_login_ip!=null">
+							when id=#{item.last_login_ip,jdbcType=INTEGER}
+							then #{item.last_login_ip,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" last_login_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.last_login_time!=null">
+							when id=#{item.last_login_time,jdbcType=INTEGER}
+							then #{item.last_login_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" add_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.add_time!=null">
+							when id=#{item.add_time,jdbcType=INTEGER}
+							then #{item.add_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" update_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.update_time!=null">
+							when id=#{item.update_time,jdbcType=INTEGER}
+							then #{item.update_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" avatar = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.avatar!=null">
+							when id=#{item.avatar,jdbcType=INTEGER}
+							then #{item.avatar,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" admin_role_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.admin_role_id!=null">
+							when id=#{item.admin_role_id,jdbcType=INTEGER}
+							then #{item.admin_role_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_admin
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopAdmin">
+		delete from nideshop_admin
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

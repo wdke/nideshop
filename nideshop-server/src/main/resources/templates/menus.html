@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.springframework.org/schema/util" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+<div class="container">
+	<ul class="nav nav-tabs">
+		<li name="menus" class="active" onclick="changePage(this,'/pages/nideshop/ad')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/ad/position')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/address')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/admin')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/attribute')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/attribute/category')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/brand')"><a href="#">品牌</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/cart')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/category')"><a href="#">类别</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/channel')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/collect')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/comment')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/comment/picture')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/coupon')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/feedback')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/footprint')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/goods')"><a href="#">商品表</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/goods/attribute')"><a href="#">商品属性</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/goods/gallery')"><a href="#">商品画廊</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/goods/issue')"><a href="#">货物的问题</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/goods/specification')"><a href="#">商品规格</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/keywords')"><a href="#">热闹关键词表</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/order')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/order/express')"><a href="#">订单物流信息表，发货时生成</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/order/goods')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/product')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/region')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/related/goods')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/search/history')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/shipper')"><a href="#">快递公司</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/specification')"><a href="#">规格表</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/topic')"><a href="#">专题推荐</a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/topic/category')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/user')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/user/coupon')"><a href="#"></a></li>
+		<li name="menus"onclick="changePage(this,'/pages/nideshop/user/level')"><a href="#"></a></li>
+	</ul>
+</div>
+
+<iframe id="iframe" frameborder="0" style="padding-top: 50px;" width="100%" height="800" th:src="@{/pages/nideshop/ad}"></iframe>
+
+
+<script type="text/javascript">
+
+	//页面跳转方法
+	function changePage(obj,url) {
+
+		$("li[name='menus']").prop("class", "");//全选
+		$(obj).prop("class","active");
+		$("#iframe").prop("src",url);
+	}
+
+</script>
+
+</body>
+</html>

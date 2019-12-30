@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--商品表-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopGoodsMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopGoods">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="category_id" jdbcType="INTEGER" property="category_id"/>
+		<result column="goods_sn" jdbcType="VARCHAR" property="goods_sn"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="brand_id" jdbcType="INTEGER" property="brand_id"/>
+		<result column="goods_number" jdbcType="INTEGER" property="goods_number"/>
+		<result column="keywords" jdbcType="VARCHAR" property="keywords"/>
+		<result column="goods_brief" jdbcType="VARCHAR" property="goods_brief"/>
+		<result column="goods_desc" jdbcType="LONGVARCHAR" property="goods_desc"/>
+		<result column="is_on_sale" jdbcType="TINYINT" property="is_on_sale"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+		<result column="sort_order" jdbcType="SMALLINT" property="sort_order"/>
+		<result column="is_delete" jdbcType="TINYINT" property="is_delete"/>
+		<result column="attribute_category" jdbcType="INTEGER" property="attribute_category"/>
+		<result column="counter_price" jdbcType="DECIMAL" property="counter_price"/>
+		<result column="extra_price" jdbcType="DECIMAL" property="extra_price"/>
+		<result column="is_new" jdbcType="TINYINT" property="is_new"/>
+		<result column="goods_unit" jdbcType="VARCHAR" property="goods_unit"/>
+		<result column="primary_pic_url" jdbcType="VARCHAR" property="primary_pic_url"/>
+		<result column="list_pic_url" jdbcType="VARCHAR" property="list_pic_url"/>
+		<result column="retail_price" jdbcType="DECIMAL" property="retail_price"/>
+		<result column="sell_volume" jdbcType="INTEGER" property="sell_volume"/>
+		<result column="primary_product_id" jdbcType="INTEGER" property="primary_product_id"/>
+		<result column="unit_price" jdbcType="DECIMAL" property="unit_price"/>
+		<result column="promotion_desc" jdbcType="VARCHAR" property="promotion_desc"/>
+		<result column="promotion_tag" jdbcType="VARCHAR" property="promotion_tag"/>
+		<result column="app_exclusive_price" jdbcType="DECIMAL" property="app_exclusive_price"/>
+		<result column="is_app_exclusive" jdbcType="TINYINT" property="is_app_exclusive"/>
+		<result column="is_limited" jdbcType="INTEGER" property="is_limited"/>
+		<result column="is_hot" jdbcType="TINYINT" property="is_hot"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_goods
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,category_id,goods_sn,name,brand_id,goods_number,keywords,goods_brief,goods_desc,is_on_sale,add_time,
+		sort_order,is_delete,attribute_category,counter_price,extra_price,is_new,goods_unit,primary_pic_url,
+		list_pic_url,retail_price,sell_volume,primary_product_id,unit_price,promotion_desc,promotion_tag,
+		app_exclusive_price,is_app_exclusive,is_limited,is_hot
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="category_id != null">
+			and category_id=#{category_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			and goods_sn=#{goods_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="brand_id != null">
+			and brand_id=#{brand_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_number != null">
+			and goods_number=#{goods_number,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			and keywords=#{keywords,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_brief != null and goods_brief != ''">
+			and goods_brief=#{goods_brief,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_desc != null and goods_desc != ''">
+			and goods_desc=#{goods_desc,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="is_on_sale != null">
+			and is_on_sale=#{is_on_sale,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="is_delete != null">
+			and is_delete=#{is_delete,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="attribute_category != null">
+			and attribute_category=#{attribute_category,jdbcType=INTEGER}
+		</if>
+		<!--专柜价格-->
+		<if test="counter_price != null">
+			and counter_price=#{counter_price,jdbcType=DECIMAL}
+		</if>
+		<!--附加价格-->
+		<if test="extra_price != null">
+			and extra_price=#{extra_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="is_new != null">
+			and is_new=#{is_new,jdbcType=TINYINT}
+		</if>
+		<!--商品单位-->
+		<if test="goods_unit != null and goods_unit != ''">
+			and goods_unit=#{goods_unit,jdbcType=VARCHAR}
+		</if>
+		<!--商品主图-->
+		<if test="primary_pic_url != null and primary_pic_url != ''">
+			and primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!--商品列表图-->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!--零售价格-->
+		<if test="retail_price != null">
+			and retail_price=#{retail_price,jdbcType=DECIMAL}
+		</if>
+		<!--销售量-->
+		<if test="sell_volume != null">
+			and sell_volume=#{sell_volume,jdbcType=INTEGER}
+		</if>
+		<!--主sku　product_id-->
+		<if test="primary_product_id != null">
+			and primary_product_id=#{primary_product_id,jdbcType=INTEGER}
+		</if>
+		<!--单位价格，单价-->
+		<if test="unit_price != null">
+			and unit_price=#{unit_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="promotion_desc != null and promotion_desc != ''">
+			and promotion_desc=#{promotion_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="promotion_tag != null and promotion_tag != ''">
+			and promotion_tag=#{promotion_tag,jdbcType=VARCHAR}
+		</if>
+		<!--APP专享价-->
+		<if test="app_exclusive_price != null">
+			and app_exclusive_price=#{app_exclusive_price,jdbcType=DECIMAL}
+		</if>
+		<!--是否是APP专属-->
+		<if test="is_app_exclusive != null">
+			and is_app_exclusive=#{is_app_exclusive,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_limited != null">
+			and is_limited=#{is_limited,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			and is_hot=#{is_hot,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="category_id != null">
+			and category_id=#{category_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			and goods_sn=#{goods_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="brand_id != null">
+			and brand_id=#{brand_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_number != null">
+			and goods_number=#{goods_number,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			and keywords=#{keywords,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_brief != null and goods_brief != ''">
+			and goods_brief=#{goods_brief,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_desc != null and goods_desc != ''">
+			and goods_desc=#{goods_desc,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="is_on_sale != null">
+			and is_on_sale=#{is_on_sale,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="is_delete != null">
+			and is_delete=#{is_delete,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="attribute_category != null">
+			and attribute_category=#{attribute_category,jdbcType=INTEGER}
+		</if>
+		<!--专柜价格-->
+		<if test="counter_price != null">
+			and counter_price=#{counter_price,jdbcType=DECIMAL}
+		</if>
+		<!--附加价格-->
+		<if test="extra_price != null">
+			and extra_price=#{extra_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="is_new != null">
+			and is_new=#{is_new,jdbcType=TINYINT}
+		</if>
+		<!--商品单位-->
+		<if test="goods_unit != null and goods_unit != ''">
+			and goods_unit=#{goods_unit,jdbcType=VARCHAR}
+		</if>
+		<!--商品主图-->
+		<if test="primary_pic_url != null and primary_pic_url != ''">
+			and primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!--商品列表图-->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!--零售价格-->
+		<if test="retail_price != null">
+			and retail_price=#{retail_price,jdbcType=DECIMAL}
+		</if>
+		<!--销售量-->
+		<if test="sell_volume != null">
+			and sell_volume=#{sell_volume,jdbcType=INTEGER}
+		</if>
+		<!--主sku　product_id-->
+		<if test="primary_product_id != null">
+			and primary_product_id=#{primary_product_id,jdbcType=INTEGER}
+		</if>
+		<!--单位价格，单价-->
+		<if test="unit_price != null">
+			and unit_price=#{unit_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="promotion_desc != null and promotion_desc != ''">
+			and promotion_desc=#{promotion_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="promotion_tag != null and promotion_tag != ''">
+			and promotion_tag=#{promotion_tag,jdbcType=VARCHAR}
+		</if>
+		<!--APP专享价-->
+		<if test="app_exclusive_price != null">
+			and app_exclusive_price=#{app_exclusive_price,jdbcType=DECIMAL}
+		</if>
+		<!--是否是APP专属-->
+		<if test="is_app_exclusive != null">
+			and is_app_exclusive=#{is_app_exclusive,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_limited != null">
+			and is_limited=#{is_limited,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			and is_hot=#{is_hot,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopGoods" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopGoods">
+		insert into nideshop_goods (
+			id,category_id,goods_sn,
+			name,brand_id,goods_number,
+			keywords,goods_brief,goods_desc,
+			is_on_sale,add_time,sort_order,
+			is_delete,attribute_category,counter_price,
+			extra_price,is_new,goods_unit,
+			primary_pic_url,list_pic_url,retail_price,
+			sell_volume,primary_product_id,unit_price,
+			promotion_desc,promotion_tag,app_exclusive_price,
+			is_app_exclusive,is_limited,is_hot
+		)
+		values (
+			
+			#{id,jdbcType=INTEGER},#{category_id,jdbcType=INTEGER},#{goods_sn,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},#{brand_id,jdbcType=INTEGER},#{goods_number,jdbcType=INTEGER},
+			#{keywords,jdbcType=VARCHAR},#{goods_brief,jdbcType=VARCHAR},#{goods_desc,jdbcType=LONGVARCHAR},
+			#{is_on_sale,jdbcType=TINYINT},#{add_time,jdbcType=INTEGER},#{sort_order,jdbcType=SMALLINT},
+			#{is_delete,jdbcType=TINYINT},#{attribute_category,jdbcType=INTEGER},#{counter_price,jdbcType=DECIMAL},
+			#{extra_price,jdbcType=DECIMAL},#{is_new,jdbcType=TINYINT},#{goods_unit,jdbcType=VARCHAR},
+			#{primary_pic_url,jdbcType=VARCHAR},#{list_pic_url,jdbcType=VARCHAR},#{retail_price,jdbcType=DECIMAL},
+			#{sell_volume,jdbcType=INTEGER},#{primary_product_id,jdbcType=INTEGER},#{unit_price,jdbcType=DECIMAL},
+			#{promotion_desc,jdbcType=VARCHAR},#{promotion_tag,jdbcType=VARCHAR},#{app_exclusive_price,jdbcType=DECIMAL},
+			#{is_app_exclusive,jdbcType=TINYINT},#{is_limited,jdbcType=INTEGER},#{is_hot,jdbcType=TINYINT}
+		)
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopGoods">
+		insert into nideshop_goods (
+		<!---->
+		<if test="id != null">
+			id,
+		</if>
+		<!---->
+		<if test="category_id != null">
+			category_id,
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="brand_id != null">
+			brand_id,
+		</if>
+		<!---->
+		<if test="goods_number != null">
+			goods_number,
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			keywords=#{keywords,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_brief != null and goods_brief != ''">
+			goods_brief=#{goods_brief,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_desc != null and goods_desc != ''">
+			goods_desc=#{goods_desc,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="is_on_sale != null">
+			is_on_sale,
+		</if>
+		<!---->
+		<if test="add_time != null">
+			add_time,
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			sort_order,
+		</if>
+		<!---->
+		<if test="is_delete != null">
+			is_delete,
+		</if>
+		<!---->
+		<if test="attribute_category != null">
+			attribute_category,
+		</if>
+		<!--专柜价格-->
+		<if test="counter_price != null">
+			counter_price,
+		</if>
+		<!--附加价格-->
+		<if test="extra_price != null">
+			extra_price,
+		</if>
+		<!---->
+		<if test="is_new != null">
+			is_new,
+		</if>
+		<!--商品单位-->
+		<if test="goods_unit != null and goods_unit != ''">
+			goods_unit=#{goods_unit,jdbcType=VARCHAR},
+		</if>
+		<!--商品主图-->
+		<if test="primary_pic_url != null and primary_pic_url != ''">
+			primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!--商品列表图-->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!--零售价格-->
+		<if test="retail_price != null">
+			retail_price,
+		</if>
+		<!--销售量-->
+		<if test="sell_volume != null">
+			sell_volume,
+		</if>
+		<!--主sku　product_id-->
+		<if test="primary_product_id != null">
+			primary_product_id,
+		</if>
+		<!--单位价格，单价-->
+		<if test="unit_price != null">
+			unit_price,
+		</if>
+		<!---->
+		<if test="promotion_desc != null and promotion_desc != ''">
+			promotion_desc=#{promotion_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="promotion_tag != null and promotion_tag != ''">
+			promotion_tag=#{promotion_tag,jdbcType=VARCHAR},
+		</if>
+		<!--APP专享价-->
+		<if test="app_exclusive_price != null">
+			app_exclusive_price,
+		</if>
+		<!--是否是APP专属-->
+		<if test="is_app_exclusive != null">
+			is_app_exclusive,
+		</if>
+		<!---->
+		<if test="is_limited != null">
+			is_limited,
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			is_hot,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="id != null">
+			#{id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="category_id != null">
+			#{category_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="brand_id != null">
+			#{brand_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="goods_number != null">
+			#{goods_number,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			keywords=#{keywords,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_brief != null and goods_brief != ''">
+			goods_brief=#{goods_brief,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_desc != null and goods_desc != ''">
+			goods_desc=#{goods_desc,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="is_on_sale != null">
+			#{is_on_sale,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="add_time != null">
+			#{add_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			#{sort_order,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="is_delete != null">
+			#{is_delete,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="attribute_category != null">
+			#{attribute_category,jdbcType=INTEGER},
+		</if>
+		<!--专柜价格-->
+		<if test="counter_price != null">
+			#{counter_price,jdbcType=DECIMAL},
+		</if>
+		<!--附加价格-->
+		<if test="extra_price != null">
+			#{extra_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="is_new != null">
+			#{is_new,jdbcType=TINYINT},
+		</if>
+		<!--商品单位-->
+		<if test="goods_unit != null and goods_unit != ''">
+			goods_unit=#{goods_unit,jdbcType=VARCHAR},
+		</if>
+		<!--商品主图-->
+		<if test="primary_pic_url != null and primary_pic_url != ''">
+			primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!--商品列表图-->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!--零售价格-->
+		<if test="retail_price != null">
+			#{retail_price,jdbcType=DECIMAL},
+		</if>
+		<!--销售量-->
+		<if test="sell_volume != null">
+			#{sell_volume,jdbcType=INTEGER},
+		</if>
+		<!--主sku　product_id-->
+		<if test="primary_product_id != null">
+			#{primary_product_id,jdbcType=INTEGER},
+		</if>
+		<!--单位价格，单价-->
+		<if test="unit_price != null">
+			#{unit_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="promotion_desc != null and promotion_desc != ''">
+			promotion_desc=#{promotion_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="promotion_tag != null and promotion_tag != ''">
+			promotion_tag=#{promotion_tag,jdbcType=VARCHAR},
+		</if>
+		<!--APP专享价-->
+		<if test="app_exclusive_price != null">
+			#{app_exclusive_price,jdbcType=DECIMAL},
+		</if>
+		<!--是否是APP专属-->
+		<if test="is_app_exclusive != null">
+			#{is_app_exclusive,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="is_limited != null">
+			#{is_limited,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="is_hot != null">
+			#{is_hot,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<if test="list != null and list.size != 0">
+			insert into nideshop_goods (
+				id,category_id,goods_sn,
+				name,brand_id,goods_number,
+				keywords,goods_brief,goods_desc,
+				is_on_sale,add_time,sort_order,
+				is_delete,attribute_category,counter_price,
+				extra_price,is_new,goods_unit,
+				primary_pic_url,list_pic_url,retail_price,
+				sell_volume,primary_product_id,unit_price,
+				promotion_desc,promotion_tag,app_exclusive_price,
+				is_app_exclusive,is_limited,is_hot
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.id,jdbcType=INTEGER},#{item.category_id,jdbcType=INTEGER},#{item.goods_sn,jdbcType=VARCHAR},
+				#{item.name,jdbcType=VARCHAR},#{item.brand_id,jdbcType=INTEGER},#{item.goods_number,jdbcType=INTEGER},
+				#{item.keywords,jdbcType=VARCHAR},#{item.goods_brief,jdbcType=VARCHAR},#{item.goods_desc,jdbcType=LONGVARCHAR},
+				#{item.is_on_sale,jdbcType=TINYINT},#{item.add_time,jdbcType=INTEGER},#{item.sort_order,jdbcType=SMALLINT},
+				#{item.is_delete,jdbcType=TINYINT},#{item.attribute_category,jdbcType=INTEGER},#{item.counter_price,jdbcType=DECIMAL},
+				#{item.extra_price,jdbcType=DECIMAL},#{item.is_new,jdbcType=TINYINT},#{item.goods_unit,jdbcType=VARCHAR},
+				#{item.primary_pic_url,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR},#{item.retail_price,jdbcType=DECIMAL},
+				#{item.sell_volume,jdbcType=INTEGER},#{item.primary_product_id,jdbcType=INTEGER},#{item.unit_price,jdbcType=DECIMAL},
+				#{item.promotion_desc,jdbcType=VARCHAR},#{item.promotion_tag,jdbcType=VARCHAR},#{item.app_exclusive_price,jdbcType=DECIMAL},
+				#{item.is_app_exclusive,jdbcType=TINYINT},#{item.is_limited,jdbcType=INTEGER},#{item.is_hot,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopGoods">
+		update nideshop_goods
+		set  
+			category_id=#{category_id,jdbcType=INTEGER},
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+			name=#{name,jdbcType=VARCHAR},
+			brand_id=#{brand_id,jdbcType=INTEGER},
+			goods_number=#{goods_number,jdbcType=INTEGER},
+			keywords=#{keywords,jdbcType=VARCHAR},
+			goods_brief=#{goods_brief,jdbcType=VARCHAR},
+			goods_desc=#{goods_desc,jdbcType=LONGVARCHAR},
+			is_on_sale=#{is_on_sale,jdbcType=TINYINT},
+			add_time=#{add_time,jdbcType=INTEGER},
+			sort_order=#{sort_order,jdbcType=SMALLINT},
+			is_delete=#{is_delete,jdbcType=TINYINT},
+			attribute_category=#{attribute_category,jdbcType=INTEGER},
+			counter_price=#{counter_price,jdbcType=DECIMAL},
+			extra_price=#{extra_price,jdbcType=DECIMAL},
+			is_new=#{is_new,jdbcType=TINYINT},
+			goods_unit=#{goods_unit,jdbcType=VARCHAR},
+			primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR},
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+			retail_price=#{retail_price,jdbcType=DECIMAL},
+			sell_volume=#{sell_volume,jdbcType=INTEGER},
+			primary_product_id=#{primary_product_id,jdbcType=INTEGER},
+			unit_price=#{unit_price,jdbcType=DECIMAL},
+			promotion_desc=#{promotion_desc,jdbcType=VARCHAR},
+			promotion_tag=#{promotion_tag,jdbcType=VARCHAR},
+			app_exclusive_price=#{app_exclusive_price,jdbcType=DECIMAL},
+			is_app_exclusive=#{is_app_exclusive,jdbcType=TINYINT},
+			is_limited=#{is_limited,jdbcType=INTEGER},
+			is_hot=#{is_hot,jdbcType=TINYINT}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--商品表更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopGoods">
+		update nideshop_goods
+		<set>
+			<!---->
+			<if test="category_id != null">
+				category_id=#{category_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="goods_sn != null and goods_sn != ''">
+				goods_sn=#{goods_sn,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="brand_id != null">
+				brand_id=#{brand_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="goods_number != null">
+				goods_number=#{goods_number,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="keywords != null and keywords != ''">
+				keywords=#{keywords,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="goods_brief != null and goods_brief != ''">
+				goods_brief=#{goods_brief,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="goods_desc != null and goods_desc != ''">
+				goods_desc=#{goods_desc,jdbcType=LONGVARCHAR},
+			</if>
+			<!---->
+			<if test="is_on_sale != null">
+				is_on_sale=#{is_on_sale,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="add_time != null">
+				add_time=#{add_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="sort_order != null">
+				sort_order=#{sort_order,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="is_delete != null">
+				is_delete=#{is_delete,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="attribute_category != null">
+				attribute_category=#{attribute_category,jdbcType=INTEGER},
+			</if>
+			<!--专柜价格-->
+			<if test="counter_price != null">
+				counter_price=#{counter_price,jdbcType=DECIMAL},
+			</if>
+			<!--附加价格-->
+			<if test="extra_price != null">
+				extra_price=#{extra_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="is_new != null">
+				is_new=#{is_new,jdbcType=TINYINT},
+			</if>
+			<!--商品单位-->
+			<if test="goods_unit != null and goods_unit != ''">
+				goods_unit=#{goods_unit,jdbcType=VARCHAR},
+			</if>
+			<!--商品主图-->
+			<if test="primary_pic_url != null and primary_pic_url != ''">
+				primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!--商品列表图-->
+			<if test="list_pic_url != null and list_pic_url != ''">
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!--零售价格-->
+			<if test="retail_price != null">
+				retail_price=#{retail_price,jdbcType=DECIMAL},
+			</if>
+			<!--销售量-->
+			<if test="sell_volume != null">
+				sell_volume=#{sell_volume,jdbcType=INTEGER},
+			</if>
+			<!--主sku　product_id-->
+			<if test="primary_product_id != null">
+				primary_product_id=#{primary_product_id,jdbcType=INTEGER},
+			</if>
+			<!--单位价格，单价-->
+			<if test="unit_price != null">
+				unit_price=#{unit_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="promotion_desc != null and promotion_desc != ''">
+				promotion_desc=#{promotion_desc,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="promotion_tag != null and promotion_tag != ''">
+				promotion_tag=#{promotion_tag,jdbcType=VARCHAR},
+			</if>
+			<!--APP专享价-->
+			<if test="app_exclusive_price != null">
+				app_exclusive_price=#{app_exclusive_price,jdbcType=DECIMAL},
+			</if>
+			<!--是否是APP专属-->
+			<if test="is_app_exclusive != null">
+				is_app_exclusive=#{is_app_exclusive,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="is_limited != null">
+				is_limited=#{is_limited,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="is_hot != null">
+				is_hot=#{is_hot,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--商品表批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_goods(
+				id,category_id,goods_sn,
+				name,brand_id,goods_number,
+				keywords,goods_brief,goods_desc,
+				is_on_sale,add_time,sort_order,
+				is_delete,attribute_category,counter_price,
+				extra_price,is_new,goods_unit,
+				primary_pic_url,list_pic_url,retail_price,
+				sell_volume,primary_product_id,unit_price,
+				promotion_desc,promotion_tag,app_exclusive_price,
+				is_app_exclusive,is_limited,is_hot
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.id,jdbcType=INTEGER},#{item.category_id,jdbcType=INTEGER},#{item.goods_sn,jdbcType=VARCHAR},
+				#{item.name,jdbcType=VARCHAR},#{item.brand_id,jdbcType=INTEGER},#{item.goods_number,jdbcType=INTEGER},
+				#{item.keywords,jdbcType=VARCHAR},#{item.goods_brief,jdbcType=VARCHAR},#{item.goods_desc,jdbcType=LONGVARCHAR},
+				#{item.is_on_sale,jdbcType=TINYINT},#{item.add_time,jdbcType=INTEGER},#{item.sort_order,jdbcType=SMALLINT},
+				#{item.is_delete,jdbcType=TINYINT},#{item.attribute_category,jdbcType=INTEGER},#{item.counter_price,jdbcType=DECIMAL},
+				#{item.extra_price,jdbcType=DECIMAL},#{item.is_new,jdbcType=TINYINT},#{item.goods_unit,jdbcType=VARCHAR},
+				#{item.primary_pic_url,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR},#{item.retail_price,jdbcType=DECIMAL},
+				#{item.sell_volume,jdbcType=INTEGER},#{item.primary_product_id,jdbcType=INTEGER},#{item.unit_price,jdbcType=DECIMAL},
+				#{item.promotion_desc,jdbcType=VARCHAR},#{item.promotion_tag,jdbcType=VARCHAR},#{item.app_exclusive_price,jdbcType=DECIMAL},
+				#{item.is_app_exclusive,jdbcType=TINYINT},#{item.is_limited,jdbcType=INTEGER},#{item.is_hot,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				category_id=#{category_id,jdbcType=INTEGER},
+				goods_sn=#{goods_sn,jdbcType=VARCHAR},
+				name=#{name,jdbcType=VARCHAR},
+				brand_id=#{brand_id,jdbcType=INTEGER},
+				goods_number=#{goods_number,jdbcType=INTEGER},
+				keywords=#{keywords,jdbcType=VARCHAR},
+				goods_brief=#{goods_brief,jdbcType=VARCHAR},
+				goods_desc=#{goods_desc,jdbcType=LONGVARCHAR},
+				is_on_sale=#{is_on_sale,jdbcType=TINYINT},
+				add_time=#{add_time,jdbcType=INTEGER},
+				sort_order=#{sort_order,jdbcType=SMALLINT},
+				is_delete=#{is_delete,jdbcType=TINYINT},
+				attribute_category=#{attribute_category,jdbcType=INTEGER},
+				counter_price=#{counter_price,jdbcType=DECIMAL},
+				extra_price=#{extra_price,jdbcType=DECIMAL},
+				is_new=#{is_new,jdbcType=TINYINT},
+				goods_unit=#{goods_unit,jdbcType=VARCHAR},
+				primary_pic_url=#{primary_pic_url,jdbcType=VARCHAR},
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+				retail_price=#{retail_price,jdbcType=DECIMAL},
+				sell_volume=#{sell_volume,jdbcType=INTEGER},
+				primary_product_id=#{primary_product_id,jdbcType=INTEGER},
+				unit_price=#{unit_price,jdbcType=DECIMAL},
+				promotion_desc=#{promotion_desc,jdbcType=VARCHAR},
+				promotion_tag=#{promotion_tag,jdbcType=VARCHAR},
+				app_exclusive_price=#{app_exclusive_price,jdbcType=DECIMAL},
+				is_app_exclusive=#{is_app_exclusive,jdbcType=TINYINT},
+				is_limited=#{is_limited,jdbcType=INTEGER},
+				is_hot=#{is_hot,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_goods
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" category_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.category_id!=null">
+							when id=#{item.category_id,jdbcType=INTEGER}
+							then #{item.category_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_sn = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_sn!=null">
+							when id=#{item.goods_sn,jdbcType=INTEGER}
+							then #{item.goods_sn,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=INTEGER}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" brand_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.brand_id!=null">
+							when id=#{item.brand_id,jdbcType=INTEGER}
+							then #{item.brand_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_number = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_number!=null">
+							when id=#{item.goods_number,jdbcType=INTEGER}
+							then #{item.goods_number,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" keywords = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.keywords!=null">
+							when id=#{item.keywords,jdbcType=INTEGER}
+							then #{item.keywords,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_brief = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_brief!=null">
+							when id=#{item.goods_brief,jdbcType=INTEGER}
+							then #{item.goods_brief,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_desc = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_desc!=null">
+							when id=#{item.goods_desc,jdbcType=INTEGER}
+							then #{item.goods_desc,jdbcType=LONGVARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_on_sale = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_on_sale!=null">
+							when id=#{item.is_on_sale,jdbcType=INTEGER}
+							then #{item.is_on_sale,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" add_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.add_time!=null">
+							when id=#{item.add_time,jdbcType=INTEGER}
+							then #{item.add_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sort_order!=null">
+							when id=#{item.sort_order,jdbcType=INTEGER}
+							then #{item.sort_order,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_delete = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_delete!=null">
+							when id=#{item.is_delete,jdbcType=INTEGER}
+							then #{item.is_delete,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" attribute_category = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.attribute_category!=null">
+							when id=#{item.attribute_category,jdbcType=INTEGER}
+							then #{item.attribute_category,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--专柜价格-->
+				<trim prefix=" counter_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.counter_price!=null">
+							when id=#{item.counter_price,jdbcType=INTEGER}
+							then #{item.counter_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!--附加价格-->
+				<trim prefix=" extra_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.extra_price!=null">
+							when id=#{item.extra_price,jdbcType=INTEGER}
+							then #{item.extra_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_new = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_new!=null">
+							when id=#{item.is_new,jdbcType=INTEGER}
+							then #{item.is_new,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!--商品单位-->
+				<trim prefix=" goods_unit = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_unit!=null">
+							when id=#{item.goods_unit,jdbcType=INTEGER}
+							then #{item.goods_unit,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--商品主图-->
+				<trim prefix=" primary_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.primary_pic_url!=null">
+							when id=#{item.primary_pic_url,jdbcType=INTEGER}
+							then #{item.primary_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--商品列表图-->
+				<trim prefix=" list_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.list_pic_url!=null">
+							when id=#{item.list_pic_url,jdbcType=INTEGER}
+							then #{item.list_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--零售价格-->
+				<trim prefix=" retail_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.retail_price!=null">
+							when id=#{item.retail_price,jdbcType=INTEGER}
+							then #{item.retail_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!--销售量-->
+				<trim prefix=" sell_volume = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sell_volume!=null">
+							when id=#{item.sell_volume,jdbcType=INTEGER}
+							then #{item.sell_volume,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--主sku　product_id-->
+				<trim prefix=" primary_product_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.primary_product_id!=null">
+							when id=#{item.primary_product_id,jdbcType=INTEGER}
+							then #{item.primary_product_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--单位价格，单价-->
+				<trim prefix=" unit_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.unit_price!=null">
+							when id=#{item.unit_price,jdbcType=INTEGER}
+							then #{item.unit_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" promotion_desc = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.promotion_desc!=null">
+							when id=#{item.promotion_desc,jdbcType=INTEGER}
+							then #{item.promotion_desc,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" promotion_tag = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.promotion_tag!=null">
+							when id=#{item.promotion_tag,jdbcType=INTEGER}
+							then #{item.promotion_tag,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--APP专享价-->
+				<trim prefix=" app_exclusive_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.app_exclusive_price!=null">
+							when id=#{item.app_exclusive_price,jdbcType=INTEGER}
+							then #{item.app_exclusive_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!--是否是APP专属-->
+				<trim prefix=" is_app_exclusive = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_app_exclusive!=null">
+							when id=#{item.is_app_exclusive,jdbcType=INTEGER}
+							then #{item.is_app_exclusive,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_limited = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_limited!=null">
+							when id=#{item.is_limited,jdbcType=INTEGER}
+							then #{item.is_limited,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_hot = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_hot!=null">
+							when id=#{item.is_hot,jdbcType=INTEGER}
+							then #{item.is_hot,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_goods
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopGoods">
+		delete from nideshop_goods
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

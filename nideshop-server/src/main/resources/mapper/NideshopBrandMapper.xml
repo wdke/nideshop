@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--品牌-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopBrandMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopBrand">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="list_pic_url" jdbcType="VARCHAR" property="list_pic_url"/>
+		<result column="simple_desc" jdbcType="VARCHAR" property="simple_desc"/>
+		<result column="pic_url" jdbcType="VARCHAR" property="pic_url"/>
+		<result column="sort_order" jdbcType="TINYINT" property="sort_order"/>
+		<result column="is_show" jdbcType="TINYINT" property="is_show"/>
+		<result column="floor_price" jdbcType="DECIMAL" property="floor_price"/>
+		<result column="app_list_pic_url" jdbcType="VARCHAR" property="app_list_pic_url"/>
+		<result column="is_new" jdbcType="TINYINT" property="is_new"/>
+		<result column="new_pic_url" jdbcType="VARCHAR" property="new_pic_url"/>
+		<result column="new_sort_order" jdbcType="TINYINT" property="new_sort_order"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_brand
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,name,list_pic_url,simple_desc,pic_url,sort_order,is_show,floor_price,app_list_pic_url,is_new,new_pic_url,
+		new_sort_order
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="simple_desc != null and simple_desc != ''">
+			and simple_desc=#{simple_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="pic_url != null and pic_url != ''">
+			and pic_url=#{pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="floor_price != null">
+			and floor_price=#{floor_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="app_list_pic_url != null and app_list_pic_url != ''">
+			and app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_new != null">
+			and is_new=#{is_new,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="new_pic_url != null and new_pic_url != ''">
+			and new_pic_url=#{new_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="new_sort_order != null">
+			and new_sort_order=#{new_sort_order,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="simple_desc != null and simple_desc != ''">
+			and simple_desc=#{simple_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="pic_url != null and pic_url != ''">
+			and pic_url=#{pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="floor_price != null">
+			and floor_price=#{floor_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="app_list_pic_url != null and app_list_pic_url != ''">
+			and app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_new != null">
+			and is_new=#{is_new,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="new_pic_url != null and new_pic_url != ''">
+			and new_pic_url=#{new_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="new_sort_order != null">
+			and new_sort_order=#{new_sort_order,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopBrand" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopBrand" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopBrand">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_brand (
+			name,list_pic_url,simple_desc,
+			pic_url,sort_order,is_show,
+			floor_price,app_list_pic_url,is_new,
+			new_pic_url,new_sort_order
+		)
+		values (
+			
+			#{name,jdbcType=VARCHAR},#{list_pic_url,jdbcType=VARCHAR},#{simple_desc,jdbcType=VARCHAR},
+			#{pic_url,jdbcType=VARCHAR},#{sort_order,jdbcType=TINYINT},#{is_show,jdbcType=TINYINT},
+			#{floor_price,jdbcType=DECIMAL},#{app_list_pic_url,jdbcType=VARCHAR},#{is_new,jdbcType=TINYINT},
+			#{new_pic_url,jdbcType=VARCHAR},#{new_sort_order,jdbcType=TINYINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopBrand">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_brand (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="simple_desc != null and simple_desc != ''">
+			simple_desc=#{simple_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="pic_url != null and pic_url != ''">
+			pic_url=#{pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			sort_order,
+		</if>
+		<!---->
+		<if test="is_show != null">
+			is_show,
+		</if>
+		<!---->
+		<if test="floor_price != null">
+			floor_price,
+		</if>
+		<!---->
+		<if test="app_list_pic_url != null and app_list_pic_url != ''">
+			app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_new != null">
+			is_new,
+		</if>
+		<!---->
+		<if test="new_pic_url != null and new_pic_url != ''">
+			new_pic_url=#{new_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="new_sort_order != null">
+			new_sort_order,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="simple_desc != null and simple_desc != ''">
+			simple_desc=#{simple_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="pic_url != null and pic_url != ''">
+			pic_url=#{pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			#{sort_order,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="is_show != null">
+			#{is_show,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="floor_price != null">
+			#{floor_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="app_list_pic_url != null and app_list_pic_url != ''">
+			app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_new != null">
+			#{is_new,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="new_pic_url != null and new_pic_url != ''">
+			new_pic_url=#{new_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="new_sort_order != null">
+			#{new_sort_order,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_brand (
+				name,list_pic_url,simple_desc,
+				pic_url,sort_order,is_show,
+				floor_price,app_list_pic_url,is_new,
+				new_pic_url,new_sort_order
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR},#{item.simple_desc,jdbcType=VARCHAR},
+				#{item.pic_url,jdbcType=VARCHAR},#{item.sort_order,jdbcType=TINYINT},#{item.is_show,jdbcType=TINYINT},
+				#{item.floor_price,jdbcType=DECIMAL},#{item.app_list_pic_url,jdbcType=VARCHAR},#{item.is_new,jdbcType=TINYINT},
+				#{item.new_pic_url,jdbcType=VARCHAR},#{item.new_sort_order,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopBrand" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopBrand">
+		update nideshop_brand
+		set  
+			name=#{name,jdbcType=VARCHAR},
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+			simple_desc=#{simple_desc,jdbcType=VARCHAR},
+			pic_url=#{pic_url,jdbcType=VARCHAR},
+			sort_order=#{sort_order,jdbcType=TINYINT},
+			is_show=#{is_show,jdbcType=TINYINT},
+			floor_price=#{floor_price,jdbcType=DECIMAL},
+			app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR},
+			is_new=#{is_new,jdbcType=TINYINT},
+			new_pic_url=#{new_pic_url,jdbcType=VARCHAR},
+			new_sort_order=#{new_sort_order,jdbcType=TINYINT}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--品牌更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopBrand">
+		update nideshop_brand
+		<set>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="list_pic_url != null and list_pic_url != ''">
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="simple_desc != null and simple_desc != ''">
+				simple_desc=#{simple_desc,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="pic_url != null and pic_url != ''">
+				pic_url=#{pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="sort_order != null">
+				sort_order=#{sort_order,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="is_show != null">
+				is_show=#{is_show,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="floor_price != null">
+				floor_price=#{floor_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="app_list_pic_url != null and app_list_pic_url != ''">
+				app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="is_new != null">
+				is_new=#{is_new,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="new_pic_url != null and new_pic_url != ''">
+				new_pic_url=#{new_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="new_sort_order != null">
+				new_sort_order=#{new_sort_order,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--品牌批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_brand(
+				name,list_pic_url,simple_desc,
+				pic_url,sort_order,is_show,
+				floor_price,app_list_pic_url,is_new,
+				new_pic_url,new_sort_order
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR},#{item.simple_desc,jdbcType=VARCHAR},
+				#{item.pic_url,jdbcType=VARCHAR},#{item.sort_order,jdbcType=TINYINT},#{item.is_show,jdbcType=TINYINT},
+				#{item.floor_price,jdbcType=DECIMAL},#{item.app_list_pic_url,jdbcType=VARCHAR},#{item.is_new,jdbcType=TINYINT},
+				#{item.new_pic_url,jdbcType=VARCHAR},#{item.new_sort_order,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				name=#{name,jdbcType=VARCHAR},
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+				simple_desc=#{simple_desc,jdbcType=VARCHAR},
+				pic_url=#{pic_url,jdbcType=VARCHAR},
+				sort_order=#{sort_order,jdbcType=TINYINT},
+				is_show=#{is_show,jdbcType=TINYINT},
+				floor_price=#{floor_price,jdbcType=DECIMAL},
+				app_list_pic_url=#{app_list_pic_url,jdbcType=VARCHAR},
+				is_new=#{is_new,jdbcType=TINYINT},
+				new_pic_url=#{new_pic_url,jdbcType=VARCHAR},
+				new_sort_order=#{new_sort_order,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_brand
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=INTEGER}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" list_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.list_pic_url!=null">
+							when id=#{item.list_pic_url,jdbcType=INTEGER}
+							then #{item.list_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" simple_desc = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.simple_desc!=null">
+							when id=#{item.simple_desc,jdbcType=INTEGER}
+							then #{item.simple_desc,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.pic_url!=null">
+							when id=#{item.pic_url,jdbcType=INTEGER}
+							then #{item.pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sort_order!=null">
+							when id=#{item.sort_order,jdbcType=INTEGER}
+							then #{item.sort_order,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_show = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_show!=null">
+							when id=#{item.is_show,jdbcType=INTEGER}
+							then #{item.is_show,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" floor_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.floor_price!=null">
+							when id=#{item.floor_price,jdbcType=INTEGER}
+							then #{item.floor_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" app_list_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.app_list_pic_url!=null">
+							when id=#{item.app_list_pic_url,jdbcType=INTEGER}
+							then #{item.app_list_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_new = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_new!=null">
+							when id=#{item.is_new,jdbcType=INTEGER}
+							then #{item.is_new,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" new_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.new_pic_url!=null">
+							when id=#{item.new_pic_url,jdbcType=INTEGER}
+							then #{item.new_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" new_sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.new_sort_order!=null">
+							when id=#{item.new_sort_order,jdbcType=INTEGER}
+							then #{item.new_sort_order,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_brand
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopBrand">
+		delete from nideshop_brand
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

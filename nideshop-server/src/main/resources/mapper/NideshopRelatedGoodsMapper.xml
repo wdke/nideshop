@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopRelatedGoodsMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopRelatedGoods">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="goods_id" jdbcType="INTEGER" property="goods_id"/>
+		<result column="related_goods_id" jdbcType="INTEGER" property="related_goods_id"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_related_goods
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,goods_id,related_goods_id
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			and goods_id=#{goods_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="related_goods_id != null">
+			and related_goods_id=#{related_goods_id,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			and goods_id=#{goods_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="related_goods_id != null">
+			and related_goods_id=#{related_goods_id,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_related_goods (
+			goods_id,related_goods_id
+		)
+		values (
+			
+			#{goods_id,jdbcType=INTEGER},#{related_goods_id,jdbcType=INTEGER}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_related_goods (
+		<!---->
+		<if test="goods_id != null">
+			goods_id,
+		</if>
+		<!---->
+		<if test="related_goods_id != null">
+			related_goods_id,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="goods_id != null">
+			#{goods_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="related_goods_id != null">
+			#{related_goods_id,jdbcType=INTEGER},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_related_goods (
+				goods_id,related_goods_id
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.goods_id,jdbcType=INTEGER},#{item.related_goods_id,jdbcType=INTEGER}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods">
+		update nideshop_related_goods
+		set  
+			goods_id=#{goods_id,jdbcType=INTEGER},
+			related_goods_id=#{related_goods_id,jdbcType=INTEGER}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods">
+		update nideshop_related_goods
+		<set>
+			<!---->
+			<if test="goods_id != null">
+				goods_id=#{goods_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="related_goods_id != null">
+				related_goods_id=#{related_goods_id,jdbcType=INTEGER},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_related_goods(
+				goods_id,related_goods_id
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.goods_id,jdbcType=INTEGER},#{item.related_goods_id,jdbcType=INTEGER})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				goods_id=#{goods_id,jdbcType=INTEGER},
+				related_goods_id=#{related_goods_id,jdbcType=INTEGER}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_related_goods
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" goods_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_id!=null">
+							when id=#{item.goods_id,jdbcType=INTEGER}
+							then #{item.goods_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" related_goods_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.related_goods_id!=null">
+							when id=#{item.related_goods_id,jdbcType=INTEGER}
+							then #{item.related_goods_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_related_goods
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopRelatedGoods">
+		delete from nideshop_related_goods
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

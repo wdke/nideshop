@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopAdMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopAd">
+		<id column="id" jdbcType="SMALLINT" property="id"/>
+		<result column="ad_position_id" jdbcType="SMALLINT" property="ad_position_id"/>
+		<result column="media_type" jdbcType="TINYINT" property="media_type"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="link" jdbcType="VARCHAR" property="link"/>
+		<result column="image_url" jdbcType="LONGVARCHAR" property="image_url"/>
+		<result column="content" jdbcType="VARCHAR" property="content"/>
+		<result column="end_time" jdbcType="INTEGER" property="end_time"/>
+		<result column="enabled" jdbcType="TINYINT" property="enabled"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_ad
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,ad_position_id,media_type,name,link,image_url,content,end_time,enabled
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="ad_position_id != null">
+			and ad_position_id=#{ad_position_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="media_type != null">
+			and media_type=#{media_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="link != null and link != ''">
+			and link=#{link,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="image_url != null and image_url != ''">
+			and image_url=#{image_url,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			and content=#{content,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="end_time != null">
+			and end_time=#{end_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="enabled != null">
+			and enabled=#{enabled,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="ad_position_id != null">
+			and ad_position_id=#{ad_position_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="media_type != null">
+			and media_type=#{media_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="link != null and link != ''">
+			and link=#{link,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="image_url != null and image_url != ''">
+			and image_url=#{image_url,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			and content=#{content,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="end_time != null">
+			and end_time=#{end_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="enabled != null">
+			and enabled=#{enabled,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopAd" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopAd" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopAd">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_ad (
+			ad_position_id,media_type,name,
+			link,image_url,content,
+			end_time,enabled
+		)
+		values (
+			
+			#{ad_position_id,jdbcType=SMALLINT},#{media_type,jdbcType=TINYINT},#{name,jdbcType=VARCHAR},
+			#{link,jdbcType=VARCHAR},#{image_url,jdbcType=LONGVARCHAR},#{content,jdbcType=VARCHAR},
+			#{end_time,jdbcType=INTEGER},#{enabled,jdbcType=TINYINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopAd">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_ad (
+		<!---->
+		<if test="ad_position_id != null">
+			ad_position_id,
+		</if>
+		<!---->
+		<if test="media_type != null">
+			media_type,
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="link != null and link != ''">
+			link=#{link,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="image_url != null and image_url != ''">
+			image_url=#{image_url,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			content=#{content,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="end_time != null">
+			end_time,
+		</if>
+		<!---->
+		<if test="enabled != null">
+			enabled,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="ad_position_id != null">
+			#{ad_position_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="media_type != null">
+			#{media_type,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="link != null and link != ''">
+			link=#{link,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="image_url != null and image_url != ''">
+			image_url=#{image_url,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			content=#{content,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="end_time != null">
+			#{end_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="enabled != null">
+			#{enabled,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_ad (
+				ad_position_id,media_type,name,
+				link,image_url,content,
+				end_time,enabled
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.ad_position_id,jdbcType=SMALLINT},#{item.media_type,jdbcType=TINYINT},#{item.name,jdbcType=VARCHAR},
+				#{item.link,jdbcType=VARCHAR},#{item.image_url,jdbcType=LONGVARCHAR},#{item.content,jdbcType=VARCHAR},
+				#{item.end_time,jdbcType=INTEGER},#{item.enabled,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAd" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAd">
+		update nideshop_ad
+		set  
+			ad_position_id=#{ad_position_id,jdbcType=SMALLINT},
+			media_type=#{media_type,jdbcType=TINYINT},
+			name=#{name,jdbcType=VARCHAR},
+			link=#{link,jdbcType=VARCHAR},
+			image_url=#{image_url,jdbcType=LONGVARCHAR},
+			content=#{content,jdbcType=VARCHAR},
+			end_time=#{end_time,jdbcType=INTEGER},
+			enabled=#{enabled,jdbcType=TINYINT}
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopAd">
+		update nideshop_ad
+		<set>
+			<!---->
+			<if test="ad_position_id != null">
+				ad_position_id=#{ad_position_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="media_type != null">
+				media_type=#{media_type,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="link != null and link != ''">
+				link=#{link,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="image_url != null and image_url != ''">
+				image_url=#{image_url,jdbcType=LONGVARCHAR},
+			</if>
+			<!---->
+			<if test="content != null and content != ''">
+				content=#{content,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="end_time != null">
+				end_time=#{end_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="enabled != null">
+				enabled=#{enabled,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_ad(
+				ad_position_id,media_type,name,
+				link,image_url,content,
+				end_time,enabled
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.ad_position_id,jdbcType=SMALLINT},#{item.media_type,jdbcType=TINYINT},#{item.name,jdbcType=VARCHAR},
+				#{item.link,jdbcType=VARCHAR},#{item.image_url,jdbcType=LONGVARCHAR},#{item.content,jdbcType=VARCHAR},
+				#{item.end_time,jdbcType=INTEGER},#{item.enabled,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				ad_position_id=#{ad_position_id,jdbcType=SMALLINT},
+				media_type=#{media_type,jdbcType=TINYINT},
+				name=#{name,jdbcType=VARCHAR},
+				link=#{link,jdbcType=VARCHAR},
+				image_url=#{image_url,jdbcType=LONGVARCHAR},
+				content=#{content,jdbcType=VARCHAR},
+				end_time=#{end_time,jdbcType=INTEGER},
+				enabled=#{enabled,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_ad
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" ad_position_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.ad_position_id!=null">
+							when id=#{item.ad_position_id,jdbcType=SMALLINT}
+							then #{item.ad_position_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" media_type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.media_type!=null">
+							when id=#{item.media_type,jdbcType=SMALLINT}
+							then #{item.media_type,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=SMALLINT}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" link = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.link!=null">
+							when id=#{item.link,jdbcType=SMALLINT}
+							then #{item.link,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" image_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.image_url!=null">
+							when id=#{item.image_url,jdbcType=SMALLINT}
+							then #{item.image_url,jdbcType=LONGVARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" content = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.content!=null">
+							when id=#{item.content,jdbcType=SMALLINT}
+							then #{item.content,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" end_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.end_time!=null">
+							when id=#{item.end_time,jdbcType=SMALLINT}
+							then #{item.end_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" enabled = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.enabled!=null">
+							when id=#{item.enabled,jdbcType=SMALLINT}
+							then #{item.enabled,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=SMALLINT}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_ad
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopAd">
+		delete from nideshop_ad
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

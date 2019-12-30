@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopRegionMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopRegion">
+		<id column="id" jdbcType="SMALLINT" property="id"/>
+		<result column="parent_id" jdbcType="SMALLINT" property="parent_id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="type" jdbcType="TINYINT" property="type"/>
+		<result column="agency_id" jdbcType="SMALLINT" property="agency_id"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_region
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,parent_id,name,type,agency_id
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="agency_id != null">
+			and agency_id=#{agency_id,jdbcType=SMALLINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="agency_id != null">
+			and agency_id=#{agency_id,jdbcType=SMALLINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopRegion" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopRegion" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopRegion">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_region (
+			parent_id,name,type,
+			agency_id
+		)
+		values (
+			
+			#{parent_id,jdbcType=SMALLINT},#{name,jdbcType=VARCHAR},#{type,jdbcType=TINYINT},
+			#{agency_id,jdbcType=SMALLINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopRegion">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_region (
+		<!---->
+		<if test="parent_id != null">
+			parent_id,
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type != null">
+			type,
+		</if>
+		<!---->
+		<if test="agency_id != null">
+			agency_id,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="parent_id != null">
+			#{parent_id,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type != null">
+			#{type,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="agency_id != null">
+			#{agency_id,jdbcType=SMALLINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_region (
+				parent_id,name,type,
+				agency_id
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.parent_id,jdbcType=SMALLINT},#{item.name,jdbcType=VARCHAR},#{item.type,jdbcType=TINYINT},
+				#{item.agency_id,jdbcType=SMALLINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRegion" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRegion">
+		update nideshop_region
+		set  
+			parent_id=#{parent_id,jdbcType=SMALLINT},
+			name=#{name,jdbcType=VARCHAR},
+			type=#{type,jdbcType=TINYINT},
+			agency_id=#{agency_id,jdbcType=SMALLINT}
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopRegion">
+		update nideshop_region
+		<set>
+			<!---->
+			<if test="parent_id != null">
+				parent_id=#{parent_id,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="type != null">
+				type=#{type,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="agency_id != null">
+				agency_id=#{agency_id,jdbcType=SMALLINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_region(
+				parent_id,name,type,
+				agency_id
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.parent_id,jdbcType=SMALLINT},#{item.name,jdbcType=VARCHAR},#{item.type,jdbcType=TINYINT},
+				#{item.agency_id,jdbcType=SMALLINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				parent_id=#{parent_id,jdbcType=SMALLINT},
+				name=#{name,jdbcType=VARCHAR},
+				type=#{type,jdbcType=TINYINT},
+				agency_id=#{agency_id,jdbcType=SMALLINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_region
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" parent_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.parent_id!=null">
+							when id=#{item.parent_id,jdbcType=SMALLINT}
+							then #{item.parent_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=SMALLINT}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.type!=null">
+							when id=#{item.type,jdbcType=SMALLINT}
+							then #{item.type,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" agency_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.agency_id!=null">
+							when id=#{item.agency_id,jdbcType=SMALLINT}
+							then #{item.agency_id,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=SMALLINT}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_region
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=SMALLINT}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopRegion">
+		delete from nideshop_region
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

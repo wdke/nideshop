@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopUserMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopUser">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="username" jdbcType="VARCHAR" property="username"/>
+		<result column="password" jdbcType="VARCHAR" property="password"/>
+		<result column="gender" jdbcType="TINYINT" property="gender"/>
+		<result column="birthday" jdbcType="INTEGER" property="birthday"/>
+		<result column="register_time" jdbcType="INTEGER" property="register_time"/>
+		<result column="last_login_time" jdbcType="INTEGER" property="last_login_time"/>
+		<result column="last_login_ip" jdbcType="VARCHAR" property="last_login_ip"/>
+		<result column="user_level_id" jdbcType="TINYINT" property="user_level_id"/>
+		<result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+		<result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+		<result column="register_ip" jdbcType="VARCHAR" property="register_ip"/>
+		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+		<result column="weixin_openid" jdbcType="VARCHAR" property="weixin_openid"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_user
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,username,password,gender,birthday,register_time,last_login_time,last_login_ip,user_level_id,nickname,
+		mobile,register_ip,avatar,weixin_openid
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="username != null and username != ''">
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			and password=#{password,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="gender != null">
+			and gender=#{gender,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="birthday != null">
+			and birthday=#{birthday,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="register_time != null">
+			and register_time=#{register_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			and last_login_time=#{last_login_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			and last_login_ip=#{last_login_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_level_id != null">
+			and user_level_id=#{user_level_id,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="nickname != null and nickname != ''">
+			and nickname=#{nickname,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="register_ip != null and register_ip != ''">
+			and register_ip=#{register_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="weixin_openid != null and weixin_openid != ''">
+			and weixin_openid=#{weixin_openid,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="username != null and username != ''">
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			and password=#{password,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="gender != null">
+			and gender=#{gender,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="birthday != null">
+			and birthday=#{birthday,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="register_time != null">
+			and register_time=#{register_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			and last_login_time=#{last_login_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			and last_login_ip=#{last_login_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_level_id != null">
+			and user_level_id=#{user_level_id,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="nickname != null and nickname != ''">
+			and nickname=#{nickname,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			and mobile=#{mobile,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="register_ip != null and register_ip != ''">
+			and register_ip=#{register_ip,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="weixin_openid != null and weixin_openid != ''">
+			and weixin_openid=#{weixin_openid,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopUser" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopUser" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopUser">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_user (
+			username,password,gender,
+			birthday,register_time,last_login_time,
+			last_login_ip,user_level_id,nickname,
+			mobile,register_ip,avatar,
+			weixin_openid
+		)
+		values (
+			
+			#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{gender,jdbcType=TINYINT},
+			#{birthday,jdbcType=INTEGER},#{register_time,jdbcType=INTEGER},#{last_login_time,jdbcType=INTEGER},
+			#{last_login_ip,jdbcType=VARCHAR},#{user_level_id,jdbcType=TINYINT},#{nickname,jdbcType=VARCHAR},
+			#{mobile,jdbcType=VARCHAR},#{register_ip,jdbcType=VARCHAR},#{avatar,jdbcType=VARCHAR},
+			#{weixin_openid,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopUser">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_user (
+		<!---->
+		<if test="username != null and username != ''">
+			username=#{username,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			password=#{password,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="gender != null">
+			gender,
+		</if>
+		<!---->
+		<if test="birthday != null">
+			birthday,
+		</if>
+		<!---->
+		<if test="register_time != null">
+			register_time,
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			last_login_time,
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_level_id != null">
+			user_level_id,
+		</if>
+		<!---->
+		<if test="nickname != null and nickname != ''">
+			nickname=#{nickname,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="register_ip != null and register_ip != ''">
+			register_ip=#{register_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="weixin_openid != null and weixin_openid != ''">
+			weixin_openid=#{weixin_openid,jdbcType=VARCHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="username != null and username != ''">
+			username=#{username,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="password != null and password != ''">
+			password=#{password,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="gender != null">
+			#{gender,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="birthday != null">
+			#{birthday,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="register_time != null">
+			#{register_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="last_login_time != null">
+			#{last_login_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="last_login_ip != null and last_login_ip != ''">
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_level_id != null">
+			#{user_level_id,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="nickname != null and nickname != ''">
+			nickname=#{nickname,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="mobile != null and mobile != ''">
+			mobile=#{mobile,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="register_ip != null and register_ip != ''">
+			register_ip=#{register_ip,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="weixin_openid != null and weixin_openid != ''">
+			weixin_openid=#{weixin_openid,jdbcType=VARCHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_user (
+				username,password,gender,
+				birthday,register_time,last_login_time,
+				last_login_ip,user_level_id,nickname,
+				mobile,register_ip,avatar,
+				weixin_openid
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.username,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR},#{item.gender,jdbcType=TINYINT},
+				#{item.birthday,jdbcType=INTEGER},#{item.register_time,jdbcType=INTEGER},#{item.last_login_time,jdbcType=INTEGER},
+				#{item.last_login_ip,jdbcType=VARCHAR},#{item.user_level_id,jdbcType=TINYINT},#{item.nickname,jdbcType=VARCHAR},
+				#{item.mobile,jdbcType=VARCHAR},#{item.register_ip,jdbcType=VARCHAR},#{item.avatar,jdbcType=VARCHAR},
+				#{item.weixin_openid,jdbcType=VARCHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopUser" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopUser">
+		update nideshop_user
+		set  
+			username=#{username,jdbcType=VARCHAR},
+			password=#{password,jdbcType=VARCHAR},
+			gender=#{gender,jdbcType=TINYINT},
+			birthday=#{birthday,jdbcType=INTEGER},
+			register_time=#{register_time,jdbcType=INTEGER},
+			last_login_time=#{last_login_time,jdbcType=INTEGER},
+			last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+			user_level_id=#{user_level_id,jdbcType=TINYINT},
+			nickname=#{nickname,jdbcType=VARCHAR},
+			mobile=#{mobile,jdbcType=VARCHAR},
+			register_ip=#{register_ip,jdbcType=VARCHAR},
+			avatar=#{avatar,jdbcType=VARCHAR},
+			weixin_openid=#{weixin_openid,jdbcType=VARCHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopUser">
+		update nideshop_user
+		<set>
+			<!---->
+			<if test="username != null and username != ''">
+				username=#{username,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="password != null and password != ''">
+				password=#{password,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="gender != null">
+				gender=#{gender,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="birthday != null">
+				birthday=#{birthday,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="register_time != null">
+				register_time=#{register_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="last_login_time != null">
+				last_login_time=#{last_login_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="last_login_ip != null and last_login_ip != ''">
+				last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="user_level_id != null">
+				user_level_id=#{user_level_id,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="nickname != null and nickname != ''">
+				nickname=#{nickname,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="mobile != null and mobile != ''">
+				mobile=#{mobile,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="register_ip != null and register_ip != ''">
+				register_ip=#{register_ip,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="avatar != null and avatar != ''">
+				avatar=#{avatar,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="weixin_openid != null and weixin_openid != ''">
+				weixin_openid=#{weixin_openid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_user(
+				username,password,gender,
+				birthday,register_time,last_login_time,
+				last_login_ip,user_level_id,nickname,
+				mobile,register_ip,avatar,
+				weixin_openid
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.username,jdbcType=VARCHAR},#{item.password,jdbcType=VARCHAR},#{item.gender,jdbcType=TINYINT},
+				#{item.birthday,jdbcType=INTEGER},#{item.register_time,jdbcType=INTEGER},#{item.last_login_time,jdbcType=INTEGER},
+				#{item.last_login_ip,jdbcType=VARCHAR},#{item.user_level_id,jdbcType=TINYINT},#{item.nickname,jdbcType=VARCHAR},
+				#{item.mobile,jdbcType=VARCHAR},#{item.register_ip,jdbcType=VARCHAR},#{item.avatar,jdbcType=VARCHAR},
+				#{item.weixin_openid,jdbcType=VARCHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				username=#{username,jdbcType=VARCHAR},
+				password=#{password,jdbcType=VARCHAR},
+				gender=#{gender,jdbcType=TINYINT},
+				birthday=#{birthday,jdbcType=INTEGER},
+				register_time=#{register_time,jdbcType=INTEGER},
+				last_login_time=#{last_login_time,jdbcType=INTEGER},
+				last_login_ip=#{last_login_ip,jdbcType=VARCHAR},
+				user_level_id=#{user_level_id,jdbcType=TINYINT},
+				nickname=#{nickname,jdbcType=VARCHAR},
+				mobile=#{mobile,jdbcType=VARCHAR},
+				register_ip=#{register_ip,jdbcType=VARCHAR},
+				avatar=#{avatar,jdbcType=VARCHAR},
+				weixin_openid=#{weixin_openid,jdbcType=VARCHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_user
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" username = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.username!=null">
+							when id=#{item.username,jdbcType=INTEGER}
+							then #{item.username,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" password = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.password!=null">
+							when id=#{item.password,jdbcType=INTEGER}
+							then #{item.password,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" gender = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.gender!=null">
+							when id=#{item.gender,jdbcType=INTEGER}
+							then #{item.gender,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" birthday = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.birthday!=null">
+							when id=#{item.birthday,jdbcType=INTEGER}
+							then #{item.birthday,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" register_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.register_time!=null">
+							when id=#{item.register_time,jdbcType=INTEGER}
+							then #{item.register_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" last_login_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.last_login_time!=null">
+							when id=#{item.last_login_time,jdbcType=INTEGER}
+							then #{item.last_login_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" last_login_ip = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.last_login_ip!=null">
+							when id=#{item.last_login_ip,jdbcType=INTEGER}
+							then #{item.last_login_ip,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_level_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_level_id!=null">
+							when id=#{item.user_level_id,jdbcType=INTEGER}
+							then #{item.user_level_id,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" nickname = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.nickname!=null">
+							when id=#{item.nickname,jdbcType=INTEGER}
+							then #{item.nickname,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" mobile = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.mobile!=null">
+							when id=#{item.mobile,jdbcType=INTEGER}
+							then #{item.mobile,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" register_ip = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.register_ip!=null">
+							when id=#{item.register_ip,jdbcType=INTEGER}
+							then #{item.register_ip,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" avatar = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.avatar!=null">
+							when id=#{item.avatar,jdbcType=INTEGER}
+							then #{item.avatar,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" weixin_openid = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.weixin_openid!=null">
+							when id=#{item.weixin_openid,jdbcType=INTEGER}
+							then #{item.weixin_openid,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_user
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopUser">
+		delete from nideshop_user
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

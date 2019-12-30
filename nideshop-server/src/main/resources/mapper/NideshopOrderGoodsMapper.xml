@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopOrderGoodsMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopOrderGoods">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="order_id" jdbcType="INTEGER" property="order_id"/>
+		<result column="goods_id" jdbcType="INTEGER" property="goods_id"/>
+		<result column="goods_name" jdbcType="VARCHAR" property="goods_name"/>
+		<result column="goods_sn" jdbcType="VARCHAR" property="goods_sn"/>
+		<result column="product_id" jdbcType="INTEGER" property="product_id"/>
+		<result column="number" jdbcType="SMALLINT" property="number"/>
+		<result column="market_price" jdbcType="DECIMAL" property="market_price"/>
+		<result column="retail_price" jdbcType="DECIMAL" property="retail_price"/>
+		<result column="goods_specifition_name_value" jdbcType="LONGVARCHAR" property="goods_specifition_name_value"/>
+		<result column="is_real" jdbcType="TINYINT" property="is_real"/>
+		<result column="goods_specifition_ids" jdbcType="VARCHAR" property="goods_specifition_ids"/>
+		<result column="list_pic_url" jdbcType="VARCHAR" property="list_pic_url"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_order_goods
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,order_id,goods_id,goods_name,goods_sn,product_id,number,market_price,retail_price,goods_specifition_name_value,
+		is_real,goods_specifition_ids,list_pic_url
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			and goods_id=#{goods_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_name != null and goods_name != ''">
+			and goods_name=#{goods_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			and goods_sn=#{goods_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="product_id != null">
+			and product_id=#{product_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="number != null">
+			and number=#{number,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="market_price != null">
+			and market_price=#{market_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="retail_price != null">
+			and retail_price=#{retail_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="goods_specifition_name_value != null and goods_specifition_name_value != ''">
+			and goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="is_real != null">
+			and is_real=#{is_real,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="goods_specifition_ids != null and goods_specifition_ids != ''">
+			and goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			and goods_id=#{goods_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="goods_name != null and goods_name != ''">
+			and goods_name=#{goods_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			and goods_sn=#{goods_sn,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="product_id != null">
+			and product_id=#{product_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="number != null">
+			and number=#{number,jdbcType=SMALLINT}
+		</if>
+		<!---->
+		<if test="market_price != null">
+			and market_price=#{market_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="retail_price != null">
+			and retail_price=#{retail_price,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="goods_specifition_name_value != null and goods_specifition_name_value != ''">
+			and goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="is_real != null">
+			and is_real=#{is_real,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="goods_specifition_ids != null and goods_specifition_ids != ''">
+			and goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			and list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopOrderGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopOrderGoods" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopOrderGoods">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order_goods (
+			order_id,goods_id,goods_name,
+			goods_sn,product_id,number,
+			market_price,retail_price,goods_specifition_name_value,
+			is_real,goods_specifition_ids,list_pic_url
+		)
+		values (
+			
+			#{order_id,jdbcType=INTEGER},#{goods_id,jdbcType=INTEGER},#{goods_name,jdbcType=VARCHAR},
+			#{goods_sn,jdbcType=VARCHAR},#{product_id,jdbcType=INTEGER},#{number,jdbcType=SMALLINT},
+			#{market_price,jdbcType=DECIMAL},#{retail_price,jdbcType=DECIMAL},#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+			#{is_real,jdbcType=TINYINT},#{goods_specifition_ids,jdbcType=VARCHAR},#{list_pic_url,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopOrderGoods">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order_goods (
+		<!---->
+		<if test="order_id != null">
+			order_id,
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			goods_id,
+		</if>
+		<!---->
+		<if test="goods_name != null and goods_name != ''">
+			goods_name=#{goods_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="product_id != null">
+			product_id,
+		</if>
+		<!---->
+		<if test="number != null">
+			number,
+		</if>
+		<!---->
+		<if test="market_price != null">
+			market_price,
+		</if>
+		<!---->
+		<if test="retail_price != null">
+			retail_price,
+		</if>
+		<!---->
+		<if test="goods_specifition_name_value != null and goods_specifition_name_value != ''">
+			goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="is_real != null">
+			is_real,
+		</if>
+		<!---->
+		<if test="goods_specifition_ids != null and goods_specifition_ids != ''">
+			goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="order_id != null">
+			#{order_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="goods_id != null">
+			#{goods_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="goods_name != null and goods_name != ''">
+			goods_name=#{goods_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="goods_sn != null and goods_sn != ''">
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="product_id != null">
+			#{product_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="number != null">
+			#{number,jdbcType=SMALLINT},
+		</if>
+		<!---->
+		<if test="market_price != null">
+			#{market_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="retail_price != null">
+			#{retail_price,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="goods_specifition_name_value != null and goods_specifition_name_value != ''">
+			goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="is_real != null">
+			#{is_real,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="goods_specifition_ids != null and goods_specifition_ids != ''">
+			goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="list_pic_url != null and list_pic_url != ''">
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_order_goods (
+				order_id,goods_id,goods_name,
+				goods_sn,product_id,number,
+				market_price,retail_price,goods_specifition_name_value,
+				is_real,goods_specifition_ids,list_pic_url
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_id,jdbcType=INTEGER},#{item.goods_id,jdbcType=INTEGER},#{item.goods_name,jdbcType=VARCHAR},
+				#{item.goods_sn,jdbcType=VARCHAR},#{item.product_id,jdbcType=INTEGER},#{item.number,jdbcType=SMALLINT},
+				#{item.market_price,jdbcType=DECIMAL},#{item.retail_price,jdbcType=DECIMAL},#{item.goods_specifition_name_value,jdbcType=LONGVARCHAR},
+				#{item.is_real,jdbcType=TINYINT},#{item.goods_specifition_ids,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderGoods" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderGoods">
+		update nideshop_order_goods
+		set  
+			order_id=#{order_id,jdbcType=INTEGER},
+			goods_id=#{goods_id,jdbcType=INTEGER},
+			goods_name=#{goods_name,jdbcType=VARCHAR},
+			goods_sn=#{goods_sn,jdbcType=VARCHAR},
+			product_id=#{product_id,jdbcType=INTEGER},
+			number=#{number,jdbcType=SMALLINT},
+			market_price=#{market_price,jdbcType=DECIMAL},
+			retail_price=#{retail_price,jdbcType=DECIMAL},
+			goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+			is_real=#{is_real,jdbcType=TINYINT},
+			goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR},
+			list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderGoods">
+		update nideshop_order_goods
+		<set>
+			<!---->
+			<if test="order_id != null">
+				order_id=#{order_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="goods_id != null">
+				goods_id=#{goods_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="goods_name != null and goods_name != ''">
+				goods_name=#{goods_name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="goods_sn != null and goods_sn != ''">
+				goods_sn=#{goods_sn,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="product_id != null">
+				product_id=#{product_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="number != null">
+				number=#{number,jdbcType=SMALLINT},
+			</if>
+			<!---->
+			<if test="market_price != null">
+				market_price=#{market_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="retail_price != null">
+				retail_price=#{retail_price,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="goods_specifition_name_value != null and goods_specifition_name_value != ''">
+				goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+			</if>
+			<!---->
+			<if test="is_real != null">
+				is_real=#{is_real,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="goods_specifition_ids != null and goods_specifition_ids != ''">
+				goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="list_pic_url != null and list_pic_url != ''">
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_order_goods(
+				order_id,goods_id,goods_name,
+				goods_sn,product_id,number,
+				market_price,retail_price,goods_specifition_name_value,
+				is_real,goods_specifition_ids,list_pic_url
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_id,jdbcType=INTEGER},#{item.goods_id,jdbcType=INTEGER},#{item.goods_name,jdbcType=VARCHAR},
+				#{item.goods_sn,jdbcType=VARCHAR},#{item.product_id,jdbcType=INTEGER},#{item.number,jdbcType=SMALLINT},
+				#{item.market_price,jdbcType=DECIMAL},#{item.retail_price,jdbcType=DECIMAL},#{item.goods_specifition_name_value,jdbcType=LONGVARCHAR},
+				#{item.is_real,jdbcType=TINYINT},#{item.goods_specifition_ids,jdbcType=VARCHAR},#{item.list_pic_url,jdbcType=VARCHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				order_id=#{order_id,jdbcType=INTEGER},
+				goods_id=#{goods_id,jdbcType=INTEGER},
+				goods_name=#{goods_name,jdbcType=VARCHAR},
+				goods_sn=#{goods_sn,jdbcType=VARCHAR},
+				product_id=#{product_id,jdbcType=INTEGER},
+				number=#{number,jdbcType=SMALLINT},
+				market_price=#{market_price,jdbcType=DECIMAL},
+				retail_price=#{retail_price,jdbcType=DECIMAL},
+				goods_specifition_name_value=#{goods_specifition_name_value,jdbcType=LONGVARCHAR},
+				is_real=#{is_real,jdbcType=TINYINT},
+				goods_specifition_ids=#{goods_specifition_ids,jdbcType=VARCHAR},
+				list_pic_url=#{list_pic_url,jdbcType=VARCHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_order_goods
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" order_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_id!=null">
+							when id=#{item.order_id,jdbcType=INTEGER}
+							then #{item.order_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_id!=null">
+							when id=#{item.goods_id,jdbcType=INTEGER}
+							then #{item.goods_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_name!=null">
+							when id=#{item.goods_name,jdbcType=INTEGER}
+							then #{item.goods_name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_sn = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_sn!=null">
+							when id=#{item.goods_sn,jdbcType=INTEGER}
+							then #{item.goods_sn,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" product_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.product_id!=null">
+							when id=#{item.product_id,jdbcType=INTEGER}
+							then #{item.product_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" number = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.number!=null">
+							when id=#{item.number,jdbcType=INTEGER}
+							then #{item.number,jdbcType=SMALLINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" market_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.market_price!=null">
+							when id=#{item.market_price,jdbcType=INTEGER}
+							then #{item.market_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" retail_price = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.retail_price!=null">
+							when id=#{item.retail_price,jdbcType=INTEGER}
+							then #{item.retail_price,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_specifition_name_value = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_specifition_name_value!=null">
+							when id=#{item.goods_specifition_name_value,jdbcType=INTEGER}
+							then #{item.goods_specifition_name_value,jdbcType=LONGVARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_real = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_real!=null">
+							when id=#{item.is_real,jdbcType=INTEGER}
+							then #{item.is_real,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" goods_specifition_ids = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.goods_specifition_ids!=null">
+							when id=#{item.goods_specifition_ids,jdbcType=INTEGER}
+							then #{item.goods_specifition_ids,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" list_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.list_pic_url!=null">
+							when id=#{item.list_pic_url,jdbcType=INTEGER}
+							then #{item.list_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_order_goods
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopOrderGoods">
+		delete from nideshop_order_goods
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

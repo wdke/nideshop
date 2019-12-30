@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>更新</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/ad/update}" method="post">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="id" id="id"
+						placeholder="请输入" th:value="${data.id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="ad_position_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="ad_position_id" id="ad_position_id"
+						placeholder="请输入" th:value="${data.ad_position_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="media_type" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="media_type" id="media_type"
+						placeholder="请输入" th:value="${data.media_type}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="name" id="name"
+						placeholder="请输入" th:value="${data.name}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="link" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="link" id="link"
+						placeholder="请输入" th:value="${data.link}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="image_url" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="image_url" id="image_url"
+						placeholder="请输入" th:value="${data.image_url}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="content" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="content" id="content"
+						placeholder="请输入" th:value="${data.content}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="end_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="end_time" id="end_time"
+						placeholder="请输入" th:value="${data.end_time}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="enabled" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="enabled" id="enabled"
+						placeholder="请输入" th:value="${data.enabled}"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

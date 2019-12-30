@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>更新</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/user/coupon/update}" method="post">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="id" id="id"
+						placeholder="请输入" th:value="${data.id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="coupon_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="coupon_id" id="coupon_id"
+						placeholder="请输入" th:value="${data.coupon_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="coupon_number" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="coupon_number" id="coupon_number"
+						placeholder="请输入" th:value="${data.coupon_number}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_id" id="user_id"
+						placeholder="请输入" th:value="${data.user_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="used_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="used_time" id="used_time"
+						placeholder="请输入" th:value="${data.used_time}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="order_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="order_id" id="order_id"
+						placeholder="请输入" th:value="${data.order_id}"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

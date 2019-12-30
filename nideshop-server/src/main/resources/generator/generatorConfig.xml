@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.SliceTablePlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.SumSelectivePlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.UpdateSqlTextOfUpdateSelectivePlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.WhereSqlTextPlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.OptimisticLockAutoIncreasePlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.BatchInsertPlugin"/>
+		<plugin type="com.github.oceanc.mybatis3.generator.plugin.PaginationPlugin"/>
+		<commentGenerator>
+			<property name="suppressDate" value="true"/>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://49.233.195.134:3306/nideshop?useUnicode=true" userId="root" password="root1234"/>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+		<!--生成模型的包名和位置-->
+		<javaModelGenerator targetProject="src/main/java" targetPackage="com.wdk.nideshop.storage.entity">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+		<!--生成映射文件的包名和位置-->
+		<sqlMapGenerator targetProject="src/main/resources" targetPackage="mapper">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		<!--生成DAO的包名和位置-->
+		<javaClientGenerator type="XMLMAPPER" targetProject="src/main/java" targetPackage="com.wdk.nideshop.storage.dao">
+			<property name="enableSbuPackages" value="true"/>
+		</javaClientGenerator>
+		<!--要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+		<!---->
+		<table tableName="nideshop_ad" domainObjectName="NideshopAd">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_ad_position" domainObjectName="NideshopAdPosition">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_address" domainObjectName="NideshopAddress">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_admin" domainObjectName="NideshopAdmin">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_attribute" domainObjectName="NideshopAttribute">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_attribute_category" domainObjectName="NideshopAttributeCategory">
+			<property name="useActualColumnNames" value="true"/>
+		</table>
+		<!--品牌-->
+		<table tableName="nideshop_brand" domainObjectName="NideshopBrand">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_cart" domainObjectName="NideshopCart">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--类别-->
+		<table tableName="nideshop_category" domainObjectName="NideshopCategory">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_channel" domainObjectName="NideshopChannel">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_collect" domainObjectName="NideshopCollect">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_comment" domainObjectName="NideshopComment">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_comment_picture" domainObjectName="NideshopCommentPicture">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_coupon" domainObjectName="NideshopCoupon">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_feedback" domainObjectName="NideshopFeedback">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="msg_id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_footprint" domainObjectName="NideshopFootprint">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--商品表-->
+		<table tableName="nideshop_goods" domainObjectName="NideshopGoods">
+			<property name="useActualColumnNames" value="true"/>
+		</table>
+		<!--商品属性-->
+		<table tableName="nideshop_goods_attribute" domainObjectName="NideshopGoodsAttribute">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--商品画廊-->
+		<table tableName="nideshop_goods_gallery" domainObjectName="NideshopGoodsGallery">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--货物的问题-->
+		<table tableName="nideshop_goods_issue" domainObjectName="NideshopGoodsIssue">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--商品规格-->
+		<table tableName="nideshop_goods_specification" domainObjectName="NideshopGoodsSpecification">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--热闹关键词表-->
+		<table tableName="nideshop_keywords" domainObjectName="NideshopKeywords">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_order" domainObjectName="NideshopOrder">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--订单物流信息表，发货时生成-->
+		<table tableName="nideshop_order_express" domainObjectName="NideshopOrderExpress">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_order_goods" domainObjectName="NideshopOrderGoods">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_product" domainObjectName="NideshopProduct">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_region" domainObjectName="NideshopRegion">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_related_goods" domainObjectName="NideshopRelatedGoods">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_search_history" domainObjectName="NideshopSearchHistory">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--快递公司-->
+		<table tableName="nideshop_shipper" domainObjectName="NideshopShipper">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--规格表-->
+		<table tableName="nideshop_specification" domainObjectName="NideshopSpecification">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!--专题推荐-->
+		<table tableName="nideshop_topic" domainObjectName="NideshopTopic">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_topic_category" domainObjectName="NideshopTopicCategory">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_user" domainObjectName="NideshopUser">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_user_coupon" domainObjectName="NideshopUserCoupon">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+		<!---->
+		<table tableName="nideshop_user_level" domainObjectName="NideshopUserLevel">
+			<property name="useActualColumnNames" value="true"/>
+			<generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
+	</context>
+</generatorConfiguration>

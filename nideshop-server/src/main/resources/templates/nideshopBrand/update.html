@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>品牌更新</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/brand/update}" method="post">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="id" id="id"
+						placeholder="请输入" th:value="${data.id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="name" id="name"
+						placeholder="请输入" th:value="${data.name}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="list_pic_url" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="list_pic_url" id="list_pic_url"
+						placeholder="请输入" th:value="${data.list_pic_url}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="simple_desc" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="simple_desc" id="simple_desc"
+						placeholder="请输入" th:value="${data.simple_desc}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pic_url" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pic_url" id="pic_url"
+						placeholder="请输入" th:value="${data.pic_url}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="sort_order" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="sort_order" id="sort_order"
+						placeholder="请输入" th:value="${data.sort_order}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="is_show" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="is_show" id="is_show"
+						placeholder="请输入" th:value="${data.is_show}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="floor_price" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="floor_price" id="floor_price"
+						placeholder="请输入" th:value="${data.floor_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="app_list_pic_url" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="app_list_pic_url" id="app_list_pic_url"
+						placeholder="请输入" th:value="${data.app_list_pic_url}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="is_new" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="is_new" id="is_new"
+						placeholder="请输入" th:value="${data.is_new}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="new_pic_url" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="new_pic_url" id="new_pic_url"
+						placeholder="请输入" th:value="${data.new_pic_url}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="new_sort_order" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="new_sort_order" id="new_sort_order"
+						placeholder="请输入" th:value="${data.new_sort_order}"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

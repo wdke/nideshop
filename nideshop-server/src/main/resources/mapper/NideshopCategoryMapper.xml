@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--类别-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopCategoryMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopCategory">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="keywords" jdbcType="VARCHAR" property="keywords"/>
+		<result column="front_desc" jdbcType="VARCHAR" property="front_desc"/>
+		<result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
+		<result column="sort_order" jdbcType="TINYINT" property="sort_order"/>
+		<result column="show_index" jdbcType="TINYINT" property="show_index"/>
+		<result column="is_show" jdbcType="TINYINT" property="is_show"/>
+		<result column="banner_url" jdbcType="VARCHAR" property="banner_url"/>
+		<result column="icon_url" jdbcType="VARCHAR" property="icon_url"/>
+		<result column="img_url" jdbcType="VARCHAR" property="img_url"/>
+		<result column="wap_banner_url" jdbcType="VARCHAR" property="wap_banner_url"/>
+		<result column="level" jdbcType="VARCHAR" property="level"/>
+		<result column="type" jdbcType="INTEGER" property="type"/>
+		<result column="front_name" jdbcType="VARCHAR" property="front_name"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_category
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,name,keywords,front_desc,parent_id,sort_order,show_index,is_show,banner_url,icon_url,img_url,wap_banner_url,
+		level,type,front_name
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			and keywords=#{keywords,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="front_desc != null and front_desc != ''">
+			and front_desc=#{front_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="show_index != null">
+			and show_index=#{show_index,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="banner_url != null and banner_url != ''">
+			and banner_url=#{banner_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="icon_url != null and icon_url != ''">
+			and icon_url=#{icon_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="img_url != null and img_url != ''">
+			and img_url=#{img_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="wap_banner_url != null and wap_banner_url != ''">
+			and wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="level != null and level != ''">
+			and level=#{level,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="front_name != null and front_name != ''">
+			and front_name=#{front_name,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="name != null and name != ''">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			and keywords=#{keywords,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="front_desc != null and front_desc != ''">
+			and front_desc=#{front_desc,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="show_index != null">
+			and show_index=#{show_index,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="banner_url != null and banner_url != ''">
+			and banner_url=#{banner_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="icon_url != null and icon_url != ''">
+			and icon_url=#{icon_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="img_url != null and img_url != ''">
+			and img_url=#{img_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="wap_banner_url != null and wap_banner_url != ''">
+			and wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="level != null and level != ''">
+			and level=#{level,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="type != null">
+			and type=#{type,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="front_name != null and front_name != ''">
+			and front_name=#{front_name,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopCategory" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopCategory" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopCategory">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_category (
+			name,keywords,front_desc,
+			parent_id,sort_order,show_index,
+			is_show,banner_url,icon_url,
+			img_url,wap_banner_url,level,
+			type,front_name
+		)
+		values (
+			
+			#{name,jdbcType=VARCHAR},#{keywords,jdbcType=VARCHAR},#{front_desc,jdbcType=VARCHAR},
+			#{parent_id,jdbcType=INTEGER},#{sort_order,jdbcType=TINYINT},#{show_index,jdbcType=TINYINT},
+			#{is_show,jdbcType=TINYINT},#{banner_url,jdbcType=VARCHAR},#{icon_url,jdbcType=VARCHAR},
+			#{img_url,jdbcType=VARCHAR},#{wap_banner_url,jdbcType=VARCHAR},#{level,jdbcType=VARCHAR},
+			#{type,jdbcType=INTEGER},#{front_name,jdbcType=VARCHAR}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopCategory">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_category (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			keywords=#{keywords,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="front_desc != null and front_desc != ''">
+			front_desc=#{front_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			parent_id,
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			sort_order,
+		</if>
+		<!---->
+		<if test="show_index != null">
+			show_index,
+		</if>
+		<!---->
+		<if test="is_show != null">
+			is_show,
+		</if>
+		<!---->
+		<if test="banner_url != null and banner_url != ''">
+			banner_url=#{banner_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="icon_url != null and icon_url != ''">
+			icon_url=#{icon_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="img_url != null and img_url != ''">
+			img_url=#{img_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="wap_banner_url != null and wap_banner_url != ''">
+			wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="level != null and level != ''">
+			level=#{level,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type != null">
+			type,
+		</if>
+		<!---->
+		<if test="front_name != null and front_name != ''">
+			front_name=#{front_name,jdbcType=VARCHAR},
+		</if>
+		)
+		values (
+		<!---->
+		<if test="name != null and name != ''">
+			name=#{name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="keywords != null and keywords != ''">
+			keywords=#{keywords,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="front_desc != null and front_desc != ''">
+			front_desc=#{front_desc,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			#{parent_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			#{sort_order,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="show_index != null">
+			#{show_index,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="is_show != null">
+			#{is_show,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="banner_url != null and banner_url != ''">
+			banner_url=#{banner_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="icon_url != null and icon_url != ''">
+			icon_url=#{icon_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="img_url != null and img_url != ''">
+			img_url=#{img_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="wap_banner_url != null and wap_banner_url != ''">
+			wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="level != null and level != ''">
+			level=#{level,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="type != null">
+			#{type,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="front_name != null and front_name != ''">
+			front_name=#{front_name,jdbcType=VARCHAR},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_category (
+				name,keywords,front_desc,
+				parent_id,sort_order,show_index,
+				is_show,banner_url,icon_url,
+				img_url,wap_banner_url,level,
+				type,front_name
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.keywords,jdbcType=VARCHAR},#{item.front_desc,jdbcType=VARCHAR},
+				#{item.parent_id,jdbcType=INTEGER},#{item.sort_order,jdbcType=TINYINT},#{item.show_index,jdbcType=TINYINT},
+				#{item.is_show,jdbcType=TINYINT},#{item.banner_url,jdbcType=VARCHAR},#{item.icon_url,jdbcType=VARCHAR},
+				#{item.img_url,jdbcType=VARCHAR},#{item.wap_banner_url,jdbcType=VARCHAR},#{item.level,jdbcType=VARCHAR},
+				#{item.type,jdbcType=INTEGER},#{item.front_name,jdbcType=VARCHAR}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCategory" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCategory">
+		update nideshop_category
+		set  
+			name=#{name,jdbcType=VARCHAR},
+			keywords=#{keywords,jdbcType=VARCHAR},
+			front_desc=#{front_desc,jdbcType=VARCHAR},
+			parent_id=#{parent_id,jdbcType=INTEGER},
+			sort_order=#{sort_order,jdbcType=TINYINT},
+			show_index=#{show_index,jdbcType=TINYINT},
+			is_show=#{is_show,jdbcType=TINYINT},
+			banner_url=#{banner_url,jdbcType=VARCHAR},
+			icon_url=#{icon_url,jdbcType=VARCHAR},
+			img_url=#{img_url,jdbcType=VARCHAR},
+			wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR},
+			level=#{level,jdbcType=VARCHAR},
+			type=#{type,jdbcType=INTEGER},
+			front_name=#{front_name,jdbcType=VARCHAR}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--类别更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopCategory">
+		update nideshop_category
+		<set>
+			<!---->
+			<if test="name != null and name != ''">
+				name=#{name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="keywords != null and keywords != ''">
+				keywords=#{keywords,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="front_desc != null and front_desc != ''">
+				front_desc=#{front_desc,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="parent_id != null">
+				parent_id=#{parent_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="sort_order != null">
+				sort_order=#{sort_order,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="show_index != null">
+				show_index=#{show_index,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="is_show != null">
+				is_show=#{is_show,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="banner_url != null and banner_url != ''">
+				banner_url=#{banner_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="icon_url != null and icon_url != ''">
+				icon_url=#{icon_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="img_url != null and img_url != ''">
+				img_url=#{img_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="wap_banner_url != null and wap_banner_url != ''">
+				wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="level != null and level != ''">
+				level=#{level,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="type != null">
+				type=#{type,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="front_name != null and front_name != ''">
+				front_name=#{front_name,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--类别批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_category(
+				name,keywords,front_desc,
+				parent_id,sort_order,show_index,
+				is_show,banner_url,icon_url,
+				img_url,wap_banner_url,level,
+				type,front_name
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.name,jdbcType=VARCHAR},#{item.keywords,jdbcType=VARCHAR},#{item.front_desc,jdbcType=VARCHAR},
+				#{item.parent_id,jdbcType=INTEGER},#{item.sort_order,jdbcType=TINYINT},#{item.show_index,jdbcType=TINYINT},
+				#{item.is_show,jdbcType=TINYINT},#{item.banner_url,jdbcType=VARCHAR},#{item.icon_url,jdbcType=VARCHAR},
+				#{item.img_url,jdbcType=VARCHAR},#{item.wap_banner_url,jdbcType=VARCHAR},#{item.level,jdbcType=VARCHAR},
+				#{item.type,jdbcType=INTEGER},#{item.front_name,jdbcType=VARCHAR})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				name=#{name,jdbcType=VARCHAR},
+				keywords=#{keywords,jdbcType=VARCHAR},
+				front_desc=#{front_desc,jdbcType=VARCHAR},
+				parent_id=#{parent_id,jdbcType=INTEGER},
+				sort_order=#{sort_order,jdbcType=TINYINT},
+				show_index=#{show_index,jdbcType=TINYINT},
+				is_show=#{is_show,jdbcType=TINYINT},
+				banner_url=#{banner_url,jdbcType=VARCHAR},
+				icon_url=#{icon_url,jdbcType=VARCHAR},
+				img_url=#{img_url,jdbcType=VARCHAR},
+				wap_banner_url=#{wap_banner_url,jdbcType=VARCHAR},
+				level=#{level,jdbcType=VARCHAR},
+				type=#{type,jdbcType=INTEGER},
+				front_name=#{front_name,jdbcType=VARCHAR}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_category
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.name!=null">
+							when id=#{item.name,jdbcType=INTEGER}
+							then #{item.name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" keywords = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.keywords!=null">
+							when id=#{item.keywords,jdbcType=INTEGER}
+							then #{item.keywords,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" front_desc = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.front_desc!=null">
+							when id=#{item.front_desc,jdbcType=INTEGER}
+							then #{item.front_desc,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" parent_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.parent_id!=null">
+							when id=#{item.parent_id,jdbcType=INTEGER}
+							then #{item.parent_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sort_order!=null">
+							when id=#{item.sort_order,jdbcType=INTEGER}
+							then #{item.sort_order,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" show_index = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.show_index!=null">
+							when id=#{item.show_index,jdbcType=INTEGER}
+							then #{item.show_index,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_show = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_show!=null">
+							when id=#{item.is_show,jdbcType=INTEGER}
+							then #{item.is_show,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" banner_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.banner_url!=null">
+							when id=#{item.banner_url,jdbcType=INTEGER}
+							then #{item.banner_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" icon_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.icon_url!=null">
+							when id=#{item.icon_url,jdbcType=INTEGER}
+							then #{item.icon_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" img_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.img_url!=null">
+							when id=#{item.img_url,jdbcType=INTEGER}
+							then #{item.img_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" wap_banner_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.wap_banner_url!=null">
+							when id=#{item.wap_banner_url,jdbcType=INTEGER}
+							then #{item.wap_banner_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" level = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.level!=null">
+							when id=#{item.level,jdbcType=INTEGER}
+							then #{item.level,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.type!=null">
+							when id=#{item.type,jdbcType=INTEGER}
+							then #{item.type,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" front_name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.front_name!=null">
+							when id=#{item.front_name,jdbcType=INTEGER}
+							then #{item.front_name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_category
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopCategory">
+		delete from nideshop_category
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

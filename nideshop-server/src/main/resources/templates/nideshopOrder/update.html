@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>更新</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/order/update}" method="post">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="id" id="id"
+						placeholder="请输入" th:value="${data.id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="order_sn" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="order_sn" id="order_sn"
+						placeholder="请输入" th:value="${data.order_sn}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_id" id="user_id"
+						placeholder="请输入" th:value="${data.user_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="order_status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="order_status" id="order_status"
+						placeholder="请输入" th:value="${data.order_status}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="shipping_status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="shipping_status" id="shipping_status"
+						placeholder="请输入" th:value="${data.shipping_status}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pay_status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pay_status" id="pay_status"
+						placeholder="请输入" th:value="${data.pay_status}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="consignee" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="consignee" id="consignee"
+						placeholder="请输入" th:value="${data.consignee}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="country" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="country" id="country"
+						placeholder="请输入" th:value="${data.country}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="province" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="province" id="province"
+						placeholder="请输入" th:value="${data.province}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="city" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="city" id="city"
+						placeholder="请输入" th:value="${data.city}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="district" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="district" id="district"
+						placeholder="请输入" th:value="${data.district}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="address" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="address" id="address"
+						placeholder="请输入" th:value="${data.address}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="mobile" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="mobile" id="mobile"
+						placeholder="请输入" th:value="${data.mobile}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="postscript" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="postscript" id="postscript"
+						placeholder="请输入" th:value="${data.postscript}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="shipping_fee" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="shipping_fee" id="shipping_fee"
+						placeholder="请输入" th:value="${data.shipping_fee}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pay_name" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pay_name" id="pay_name"
+						placeholder="请输入" th:value="${data.pay_name}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pay_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pay_id" id="pay_id"
+						placeholder="请输入" th:value="${data.pay_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="actual_price" class="col-sm-2 control-label">实际需要支付的金额:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="actual_price" id="actual_price"
+						placeholder="请输入实际需要支付的金额" th:value="${data.actual_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="integral" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="integral" id="integral"
+						placeholder="请输入" th:value="${data.integral}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="integral_money" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="integral_money" id="integral_money"
+						placeholder="请输入" th:value="${data.integral_money}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="order_price" class="col-sm-2 control-label">订单总价:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="order_price" id="order_price"
+						placeholder="请输入订单总价" th:value="${data.order_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="goods_price" class="col-sm-2 control-label">商品总价:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="goods_price" id="goods_price"
+						placeholder="请输入商品总价" th:value="${data.goods_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="add_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="add_time" id="add_time"
+						placeholder="请输入" th:value="${data.add_time}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="confirm_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="confirm_time" id="confirm_time"
+						placeholder="请输入" th:value="${data.confirm_time}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="pay_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="pay_time" id="pay_time"
+						placeholder="请输入" th:value="${data.pay_time}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="freight_price" class="col-sm-2 control-label">配送费用:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="freight_price" id="freight_price"
+						placeholder="请输入配送费用" th:value="${data.freight_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="coupon_id" class="col-sm-2 control-label">使用的优惠券id:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="coupon_id" id="coupon_id"
+						placeholder="请输入使用的优惠券id" th:value="${data.coupon_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="parent_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="parent_id" id="parent_id"
+						placeholder="请输入" th:value="${data.parent_id}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="coupon_price" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="coupon_price" id="coupon_price"
+						placeholder="请输入" th:value="${data.coupon_price}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="callback_status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="callback_status" id="callback_status"
+						placeholder="请输入" th:value="${data.callback_status}"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

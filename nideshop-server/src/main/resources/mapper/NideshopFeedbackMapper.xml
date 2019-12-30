@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!---->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopFeedbackMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopFeedback">
+		<id column="msg_id" jdbcType="INTEGER" property="msg_id"/>
+		<result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
+		<result column="user_id" jdbcType="INTEGER" property="user_id"/>
+		<result column="user_name" jdbcType="VARCHAR" property="user_name"/>
+		<result column="user_email" jdbcType="VARCHAR" property="user_email"/>
+		<result column="msg_title" jdbcType="VARCHAR" property="msg_title"/>
+		<result column="msg_type" jdbcType="TINYINT" property="msg_type"/>
+		<result column="msg_status" jdbcType="TINYINT" property="msg_status"/>
+		<result column="msg_content" jdbcType="LONGVARCHAR" property="msg_content"/>
+		<result column="msg_time" jdbcType="INTEGER" property="msg_time"/>
+		<result column="message_img" jdbcType="VARCHAR" property="message_img"/>
+		<result column="order_id" jdbcType="INTEGER" property="order_id"/>
+		<result column="msg_area" jdbcType="TINYINT" property="msg_area"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_feedback
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		msg_id,parent_id,user_id,user_name,user_email,msg_title,msg_type,msg_status,msg_content,msg_time,message_img,
+		order_id,msg_area
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="msg_id != null">
+			and msg_id=#{msg_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_name != null and user_name != ''">
+			and user_name=#{user_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_email != null and user_email != ''">
+			and user_email=#{user_email,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="msg_title != null and msg_title != ''">
+			and msg_title=#{msg_title,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="msg_type != null">
+			and msg_type=#{msg_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="msg_status != null">
+			and msg_status=#{msg_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="msg_content != null and msg_content != ''">
+			and msg_content=#{msg_content,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="msg_time != null">
+			and msg_time=#{msg_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="message_img != null and message_img != ''">
+			and message_img=#{message_img,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="msg_area != null">
+			and msg_area=#{msg_area,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="msg_id != null">
+			and msg_id=#{msg_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="parent_id != null">
+			and parent_id=#{parent_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_id != null">
+			and user_id=#{user_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="user_name != null and user_name != ''">
+			and user_name=#{user_name,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="user_email != null and user_email != ''">
+			and user_email=#{user_email,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="msg_title != null and msg_title != ''">
+			and msg_title=#{msg_title,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="msg_type != null">
+			and msg_type=#{msg_type,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="msg_status != null">
+			and msg_status=#{msg_status,jdbcType=TINYINT}
+		</if>
+		<!---->
+		<if test="msg_content != null and msg_content != ''">
+			and msg_content=#{msg_content,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="msg_time != null">
+			and msg_time=#{msg_time,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="message_img != null and message_img != ''">
+			and message_img=#{message_img,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="msg_area != null">
+			and msg_area=#{msg_area,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopFeedback" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopFeedback" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopFeedback">
+		<selectKey keyProperty="msg_id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_feedback (
+			parent_id,user_id,user_name,
+			user_email,msg_title,msg_type,
+			msg_status,msg_content,msg_time,
+			message_img,order_id,msg_area
+		)
+		values (
+			
+			#{parent_id,jdbcType=INTEGER},#{user_id,jdbcType=INTEGER},#{user_name,jdbcType=VARCHAR},
+			#{user_email,jdbcType=VARCHAR},#{msg_title,jdbcType=VARCHAR},#{msg_type,jdbcType=TINYINT},
+			#{msg_status,jdbcType=TINYINT},#{msg_content,jdbcType=LONGVARCHAR},#{msg_time,jdbcType=INTEGER},
+			#{message_img,jdbcType=VARCHAR},#{order_id,jdbcType=INTEGER},#{msg_area,jdbcType=TINYINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopFeedback">
+		<selectKey keyProperty="msg_id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_feedback (
+		<!---->
+		<if test="parent_id != null">
+			parent_id,
+		</if>
+		<!---->
+		<if test="user_id != null">
+			user_id,
+		</if>
+		<!---->
+		<if test="user_name != null and user_name != ''">
+			user_name=#{user_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_email != null and user_email != ''">
+			user_email=#{user_email,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="msg_title != null and msg_title != ''">
+			msg_title=#{msg_title,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="msg_type != null">
+			msg_type,
+		</if>
+		<!---->
+		<if test="msg_status != null">
+			msg_status,
+		</if>
+		<!---->
+		<if test="msg_content != null and msg_content != ''">
+			msg_content=#{msg_content,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="msg_time != null">
+			msg_time,
+		</if>
+		<!---->
+		<if test="message_img != null and message_img != ''">
+			message_img=#{message_img,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="order_id != null">
+			order_id,
+		</if>
+		<!---->
+		<if test="msg_area != null">
+			msg_area,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="parent_id != null">
+			#{parent_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="user_id != null">
+			#{user_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="user_name != null and user_name != ''">
+			user_name=#{user_name,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="user_email != null and user_email != ''">
+			user_email=#{user_email,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="msg_title != null and msg_title != ''">
+			msg_title=#{msg_title,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="msg_type != null">
+			#{msg_type,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="msg_status != null">
+			#{msg_status,jdbcType=TINYINT},
+		</if>
+		<!---->
+		<if test="msg_content != null and msg_content != ''">
+			msg_content=#{msg_content,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="msg_time != null">
+			#{msg_time,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="message_img != null and message_img != ''">
+			message_img=#{message_img,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="order_id != null">
+			#{order_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="msg_area != null">
+			#{msg_area,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="msg_id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_feedback (
+				parent_id,user_id,user_name,
+				user_email,msg_title,msg_type,
+				msg_status,msg_content,msg_time,
+				message_img,order_id,msg_area
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.parent_id,jdbcType=INTEGER},#{item.user_id,jdbcType=INTEGER},#{item.user_name,jdbcType=VARCHAR},
+				#{item.user_email,jdbcType=VARCHAR},#{item.msg_title,jdbcType=VARCHAR},#{item.msg_type,jdbcType=TINYINT},
+				#{item.msg_status,jdbcType=TINYINT},#{item.msg_content,jdbcType=LONGVARCHAR},#{item.msg_time,jdbcType=INTEGER},
+				#{item.message_img,jdbcType=VARCHAR},#{item.order_id,jdbcType=INTEGER},#{item.msg_area,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopFeedback" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>msg_id=#{msg_id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopFeedback">
+		update nideshop_feedback
+		set  
+			parent_id=#{parent_id,jdbcType=INTEGER},
+			user_id=#{user_id,jdbcType=INTEGER},
+			user_name=#{user_name,jdbcType=VARCHAR},
+			user_email=#{user_email,jdbcType=VARCHAR},
+			msg_title=#{msg_title,jdbcType=VARCHAR},
+			msg_type=#{msg_type,jdbcType=TINYINT},
+			msg_status=#{msg_status,jdbcType=TINYINT},
+			msg_content=#{msg_content,jdbcType=LONGVARCHAR},
+			msg_time=#{msg_time,jdbcType=INTEGER},
+			message_img=#{message_img,jdbcType=VARCHAR},
+			order_id=#{order_id,jdbcType=INTEGER},
+			msg_area=#{msg_area,jdbcType=TINYINT}
+		<where>msg_id=#{msg_id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopFeedback">
+		update nideshop_feedback
+		<set>
+			<!---->
+			<if test="parent_id != null">
+				parent_id=#{parent_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="user_id != null">
+				user_id=#{user_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="user_name != null and user_name != ''">
+				user_name=#{user_name,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="user_email != null and user_email != ''">
+				user_email=#{user_email,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="msg_title != null and msg_title != ''">
+				msg_title=#{msg_title,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="msg_type != null">
+				msg_type=#{msg_type,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="msg_status != null">
+				msg_status=#{msg_status,jdbcType=TINYINT},
+			</if>
+			<!---->
+			<if test="msg_content != null and msg_content != ''">
+				msg_content=#{msg_content,jdbcType=LONGVARCHAR},
+			</if>
+			<!---->
+			<if test="msg_time != null">
+				msg_time=#{msg_time,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="message_img != null and message_img != ''">
+				message_img=#{message_img,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="order_id != null">
+				order_id=#{order_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="msg_area != null">
+				msg_area=#{msg_area,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>msg_id=#{msg_id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="msg_id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_feedback(
+				parent_id,user_id,user_name,
+				user_email,msg_title,msg_type,
+				msg_status,msg_content,msg_time,
+				message_img,order_id,msg_area
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.parent_id,jdbcType=INTEGER},#{item.user_id,jdbcType=INTEGER},#{item.user_name,jdbcType=VARCHAR},
+				#{item.user_email,jdbcType=VARCHAR},#{item.msg_title,jdbcType=VARCHAR},#{item.msg_type,jdbcType=TINYINT},
+				#{item.msg_status,jdbcType=TINYINT},#{item.msg_content,jdbcType=LONGVARCHAR},#{item.msg_time,jdbcType=INTEGER},
+				#{item.message_img,jdbcType=VARCHAR},#{item.order_id,jdbcType=INTEGER},#{item.msg_area,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				parent_id=#{parent_id,jdbcType=INTEGER},
+				user_id=#{user_id,jdbcType=INTEGER},
+				user_name=#{user_name,jdbcType=VARCHAR},
+				user_email=#{user_email,jdbcType=VARCHAR},
+				msg_title=#{msg_title,jdbcType=VARCHAR},
+				msg_type=#{msg_type,jdbcType=TINYINT},
+				msg_status=#{msg_status,jdbcType=TINYINT},
+				msg_content=#{msg_content,jdbcType=LONGVARCHAR},
+				msg_time=#{msg_time,jdbcType=INTEGER},
+				message_img=#{message_img,jdbcType=VARCHAR},
+				order_id=#{order_id,jdbcType=INTEGER},
+				msg_area=#{msg_area,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_feedback
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" parent_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.parent_id!=null">
+							when msg_id=#{item.parent_id,jdbcType=INTEGER}
+							then #{item.parent_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_id!=null">
+							when msg_id=#{item.user_id,jdbcType=INTEGER}
+							then #{item.user_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_name!=null">
+							when msg_id=#{item.user_name,jdbcType=INTEGER}
+							then #{item.user_name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" user_email = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.user_email!=null">
+							when msg_id=#{item.user_email,jdbcType=INTEGER}
+							then #{item.user_email,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_title = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_title!=null">
+							when msg_id=#{item.msg_title,jdbcType=INTEGER}
+							then #{item.msg_title,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_type = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_type!=null">
+							when msg_id=#{item.msg_type,jdbcType=INTEGER}
+							then #{item.msg_type,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_status = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_status!=null">
+							when msg_id=#{item.msg_status,jdbcType=INTEGER}
+							then #{item.msg_status,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_content = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_content!=null">
+							when msg_id=#{item.msg_content,jdbcType=INTEGER}
+							then #{item.msg_content,jdbcType=LONGVARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_time!=null">
+							when msg_id=#{item.msg_time,jdbcType=INTEGER}
+							then #{item.msg_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" message_img = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.message_img!=null">
+							when msg_id=#{item.message_img,jdbcType=INTEGER}
+							then #{item.message_img,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" order_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_id!=null">
+							when msg_id=#{item.order_id,jdbcType=INTEGER}
+							then #{item.order_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" msg_area = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.msg_area!=null">
+							when msg_id=#{item.msg_area,jdbcType=INTEGER}
+							then #{item.msg_area,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					msg_id=#{item.msg_id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_feedback
+		<!--主键查询-->
+		<where>msg_id=#{msg_id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopFeedback">
+		delete from nideshop_feedback
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

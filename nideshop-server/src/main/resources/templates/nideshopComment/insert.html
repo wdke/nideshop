@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>新增</title>
+	<link rel="stylesheet" th:href="@{/static/bootstrap/3.3.7/css/bootstrap.min.css}">
+	<script th:src="@{/static/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/static/jquery/js/jquery-3.4.1.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<form class="form-horizontal" action="#" role="form" th:action="@{/pages/nideshop/comment/insert}" method="post">
+		<div class="form-group">
+			<label for="id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="id" id="id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="type_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="type_id" id="type_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="value_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="value_id" id="value_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="content" class="col-sm-2 control-label">储存为base64编码:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="content" id="content"
+						placeholder="请输入储存为base64编码"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="add_time" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="add_time" id="add_time"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="status" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="status" id="status"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="user_id" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="user_id" id="user_id"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="new_content" class="col-sm-2 control-label">:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="new_content" id="new_content"
+						placeholder="请输入"/>
+			</div>
+		</div>
+		<div style="text-align: right;">
+			<button type="submit" class="btn btn-default">提交</button>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>

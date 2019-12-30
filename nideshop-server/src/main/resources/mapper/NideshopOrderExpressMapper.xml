@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--订单物流信息表，发货时生成-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopOrderExpressMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopOrderExpress">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="order_id" jdbcType="INTEGER" property="order_id"/>
+		<result column="shipper_id" jdbcType="INTEGER" property="shipper_id"/>
+		<result column="shipper_name" jdbcType="VARCHAR" property="shipper_name"/>
+		<result column="shipper_code" jdbcType="VARCHAR" property="shipper_code"/>
+		<result column="logistic_code" jdbcType="VARCHAR" property="logistic_code"/>
+		<result column="traces" jdbcType="VARCHAR" property="traces"/>
+		<result column="is_finish" jdbcType="TINYINT" property="is_finish"/>
+		<result column="request_count" jdbcType="INTEGER" property="request_count"/>
+		<result column="request_time" jdbcType="INTEGER" property="request_time"/>
+		<result column="add_time" jdbcType="INTEGER" property="add_time"/>
+		<result column="update_time" jdbcType="INTEGER" property="update_time"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_order_express
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,order_id,shipper_id,shipper_name,shipper_code,logistic_code,traces,is_finish,request_count,request_time,
+		add_time,update_time
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="shipper_id != null">
+			and shipper_id=#{shipper_id,jdbcType=INTEGER}
+		</if>
+		<!--物流公司名称-->
+		<if test="shipper_name != null and shipper_name != ''">
+			and shipper_name=#{shipper_name,jdbcType=VARCHAR}
+		</if>
+		<!--物流公司代码-->
+		<if test="shipper_code != null and shipper_code != ''">
+			and shipper_code=#{shipper_code,jdbcType=VARCHAR}
+		</if>
+		<!--快递单号-->
+		<if test="logistic_code != null and logistic_code != ''">
+			and logistic_code=#{logistic_code,jdbcType=VARCHAR}
+		</if>
+		<!--物流跟踪信息-->
+		<if test="traces != null and traces != ''">
+			and traces=#{traces,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_finish != null">
+			and is_finish=#{is_finish,jdbcType=TINYINT}
+		</if>
+		<!--总查询次数-->
+		<if test="request_count != null">
+			and request_count=#{request_count,jdbcType=INTEGER}
+		</if>
+		<!--最近一次向第三方查询物流信息时间-->
+		<if test="request_time != null">
+			and request_time=#{request_time,jdbcType=INTEGER}
+		</if>
+		<!--添加时间-->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!--更新时间-->
+		<if test="update_time != null">
+			and update_time=#{update_time,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="order_id != null">
+			and order_id=#{order_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="shipper_id != null">
+			and shipper_id=#{shipper_id,jdbcType=INTEGER}
+		</if>
+		<!--物流公司名称-->
+		<if test="shipper_name != null and shipper_name != ''">
+			and shipper_name=#{shipper_name,jdbcType=VARCHAR}
+		</if>
+		<!--物流公司代码-->
+		<if test="shipper_code != null and shipper_code != ''">
+			and shipper_code=#{shipper_code,jdbcType=VARCHAR}
+		</if>
+		<!--快递单号-->
+		<if test="logistic_code != null and logistic_code != ''">
+			and logistic_code=#{logistic_code,jdbcType=VARCHAR}
+		</if>
+		<!--物流跟踪信息-->
+		<if test="traces != null and traces != ''">
+			and traces=#{traces,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="is_finish != null">
+			and is_finish=#{is_finish,jdbcType=TINYINT}
+		</if>
+		<!--总查询次数-->
+		<if test="request_count != null">
+			and request_count=#{request_count,jdbcType=INTEGER}
+		</if>
+		<!--最近一次向第三方查询物流信息时间-->
+		<if test="request_time != null">
+			and request_time=#{request_time,jdbcType=INTEGER}
+		</if>
+		<!--添加时间-->
+		<if test="add_time != null">
+			and add_time=#{add_time,jdbcType=INTEGER}
+		</if>
+		<!--更新时间-->
+		<if test="update_time != null">
+			and update_time=#{update_time,jdbcType=INTEGER}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopOrderExpress" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopOrderExpress" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopOrderExpress">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order_express (
+			order_id,shipper_id,shipper_name,
+			shipper_code,logistic_code,traces,
+			is_finish,request_count,request_time,
+			add_time,update_time
+		)
+		values (
+			
+			#{order_id,jdbcType=INTEGER},#{shipper_id,jdbcType=INTEGER},#{shipper_name,jdbcType=VARCHAR},
+			#{shipper_code,jdbcType=VARCHAR},#{logistic_code,jdbcType=VARCHAR},#{traces,jdbcType=VARCHAR},
+			#{is_finish,jdbcType=TINYINT},#{request_count,jdbcType=INTEGER},#{request_time,jdbcType=INTEGER},
+			#{add_time,jdbcType=INTEGER},#{update_time,jdbcType=INTEGER}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopOrderExpress">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_order_express (
+		<!---->
+		<if test="order_id != null">
+			order_id,
+		</if>
+		<!---->
+		<if test="shipper_id != null">
+			shipper_id,
+		</if>
+		<!--物流公司名称-->
+		<if test="shipper_name != null and shipper_name != ''">
+			shipper_name=#{shipper_name,jdbcType=VARCHAR},
+		</if>
+		<!--物流公司代码-->
+		<if test="shipper_code != null and shipper_code != ''">
+			shipper_code=#{shipper_code,jdbcType=VARCHAR},
+		</if>
+		<!--快递单号-->
+		<if test="logistic_code != null and logistic_code != ''">
+			logistic_code=#{logistic_code,jdbcType=VARCHAR},
+		</if>
+		<!--物流跟踪信息-->
+		<if test="traces != null and traces != ''">
+			traces=#{traces,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_finish != null">
+			is_finish,
+		</if>
+		<!--总查询次数-->
+		<if test="request_count != null">
+			request_count,
+		</if>
+		<!--最近一次向第三方查询物流信息时间-->
+		<if test="request_time != null">
+			request_time,
+		</if>
+		<!--添加时间-->
+		<if test="add_time != null">
+			add_time,
+		</if>
+		<!--更新时间-->
+		<if test="update_time != null">
+			update_time,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="order_id != null">
+			#{order_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="shipper_id != null">
+			#{shipper_id,jdbcType=INTEGER},
+		</if>
+		<!--物流公司名称-->
+		<if test="shipper_name != null and shipper_name != ''">
+			shipper_name=#{shipper_name,jdbcType=VARCHAR},
+		</if>
+		<!--物流公司代码-->
+		<if test="shipper_code != null and shipper_code != ''">
+			shipper_code=#{shipper_code,jdbcType=VARCHAR},
+		</if>
+		<!--快递单号-->
+		<if test="logistic_code != null and logistic_code != ''">
+			logistic_code=#{logistic_code,jdbcType=VARCHAR},
+		</if>
+		<!--物流跟踪信息-->
+		<if test="traces != null and traces != ''">
+			traces=#{traces,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="is_finish != null">
+			#{is_finish,jdbcType=TINYINT},
+		</if>
+		<!--总查询次数-->
+		<if test="request_count != null">
+			#{request_count,jdbcType=INTEGER},
+		</if>
+		<!--最近一次向第三方查询物流信息时间-->
+		<if test="request_time != null">
+			#{request_time,jdbcType=INTEGER},
+		</if>
+		<!--添加时间-->
+		<if test="add_time != null">
+			#{add_time,jdbcType=INTEGER},
+		</if>
+		<!--更新时间-->
+		<if test="update_time != null">
+			#{update_time,jdbcType=INTEGER},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_order_express (
+				order_id,shipper_id,shipper_name,
+				shipper_code,logistic_code,traces,
+				is_finish,request_count,request_time,
+				add_time,update_time
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_id,jdbcType=INTEGER},#{item.shipper_id,jdbcType=INTEGER},#{item.shipper_name,jdbcType=VARCHAR},
+				#{item.shipper_code,jdbcType=VARCHAR},#{item.logistic_code,jdbcType=VARCHAR},#{item.traces,jdbcType=VARCHAR},
+				#{item.is_finish,jdbcType=TINYINT},#{item.request_count,jdbcType=INTEGER},#{item.request_time,jdbcType=INTEGER},
+				#{item.add_time,jdbcType=INTEGER},#{item.update_time,jdbcType=INTEGER}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderExpress" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderExpress">
+		update nideshop_order_express
+		set  
+			order_id=#{order_id,jdbcType=INTEGER},
+			shipper_id=#{shipper_id,jdbcType=INTEGER},
+			shipper_name=#{shipper_name,jdbcType=VARCHAR},
+			shipper_code=#{shipper_code,jdbcType=VARCHAR},
+			logistic_code=#{logistic_code,jdbcType=VARCHAR},
+			traces=#{traces,jdbcType=VARCHAR},
+			is_finish=#{is_finish,jdbcType=TINYINT},
+			request_count=#{request_count,jdbcType=INTEGER},
+			request_time=#{request_time,jdbcType=INTEGER},
+			add_time=#{add_time,jdbcType=INTEGER},
+			update_time=#{update_time,jdbcType=INTEGER}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--订单物流信息表，发货时生成更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopOrderExpress">
+		update nideshop_order_express
+		<set>
+			<!---->
+			<if test="order_id != null">
+				order_id=#{order_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="shipper_id != null">
+				shipper_id=#{shipper_id,jdbcType=INTEGER},
+			</if>
+			<!--物流公司名称-->
+			<if test="shipper_name != null and shipper_name != ''">
+				shipper_name=#{shipper_name,jdbcType=VARCHAR},
+			</if>
+			<!--物流公司代码-->
+			<if test="shipper_code != null and shipper_code != ''">
+				shipper_code=#{shipper_code,jdbcType=VARCHAR},
+			</if>
+			<!--快递单号-->
+			<if test="logistic_code != null and logistic_code != ''">
+				logistic_code=#{logistic_code,jdbcType=VARCHAR},
+			</if>
+			<!--物流跟踪信息-->
+			<if test="traces != null and traces != ''">
+				traces=#{traces,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="is_finish != null">
+				is_finish=#{is_finish,jdbcType=TINYINT},
+			</if>
+			<!--总查询次数-->
+			<if test="request_count != null">
+				request_count=#{request_count,jdbcType=INTEGER},
+			</if>
+			<!--最近一次向第三方查询物流信息时间-->
+			<if test="request_time != null">
+				request_time=#{request_time,jdbcType=INTEGER},
+			</if>
+			<!--添加时间-->
+			<if test="add_time != null">
+				add_time=#{add_time,jdbcType=INTEGER},
+			</if>
+			<!--更新时间-->
+			<if test="update_time != null">
+				update_time=#{update_time,jdbcType=INTEGER},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--订单物流信息表，发货时生成批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_order_express(
+				order_id,shipper_id,shipper_name,
+				shipper_code,logistic_code,traces,
+				is_finish,request_count,request_time,
+				add_time,update_time
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.order_id,jdbcType=INTEGER},#{item.shipper_id,jdbcType=INTEGER},#{item.shipper_name,jdbcType=VARCHAR},
+				#{item.shipper_code,jdbcType=VARCHAR},#{item.logistic_code,jdbcType=VARCHAR},#{item.traces,jdbcType=VARCHAR},
+				#{item.is_finish,jdbcType=TINYINT},#{item.request_count,jdbcType=INTEGER},#{item.request_time,jdbcType=INTEGER},
+				#{item.add_time,jdbcType=INTEGER},#{item.update_time,jdbcType=INTEGER})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				order_id=#{order_id,jdbcType=INTEGER},
+				shipper_id=#{shipper_id,jdbcType=INTEGER},
+				shipper_name=#{shipper_name,jdbcType=VARCHAR},
+				shipper_code=#{shipper_code,jdbcType=VARCHAR},
+				logistic_code=#{logistic_code,jdbcType=VARCHAR},
+				traces=#{traces,jdbcType=VARCHAR},
+				is_finish=#{is_finish,jdbcType=TINYINT},
+				request_count=#{request_count,jdbcType=INTEGER},
+				request_time=#{request_time,jdbcType=INTEGER},
+				add_time=#{add_time,jdbcType=INTEGER},
+				update_time=#{update_time,jdbcType=INTEGER}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_order_express
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" order_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.order_id!=null">
+							when id=#{item.order_id,jdbcType=INTEGER}
+							then #{item.order_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" shipper_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.shipper_id!=null">
+							when id=#{item.shipper_id,jdbcType=INTEGER}
+							then #{item.shipper_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--物流公司名称-->
+				<trim prefix=" shipper_name = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.shipper_name!=null">
+							when id=#{item.shipper_name,jdbcType=INTEGER}
+							then #{item.shipper_name,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--物流公司代码-->
+				<trim prefix=" shipper_code = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.shipper_code!=null">
+							when id=#{item.shipper_code,jdbcType=INTEGER}
+							then #{item.shipper_code,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--快递单号-->
+				<trim prefix=" logistic_code = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.logistic_code!=null">
+							when id=#{item.logistic_code,jdbcType=INTEGER}
+							then #{item.logistic_code,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!--物流跟踪信息-->
+				<trim prefix=" traces = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.traces!=null">
+							when id=#{item.traces,jdbcType=INTEGER}
+							then #{item.traces,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_finish = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_finish!=null">
+							when id=#{item.is_finish,jdbcType=INTEGER}
+							then #{item.is_finish,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+				<!--总查询次数-->
+				<trim prefix=" request_count = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.request_count!=null">
+							when id=#{item.request_count,jdbcType=INTEGER}
+							then #{item.request_count,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--最近一次向第三方查询物流信息时间-->
+				<trim prefix=" request_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.request_time!=null">
+							when id=#{item.request_time,jdbcType=INTEGER}
+							then #{item.request_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--添加时间-->
+				<trim prefix=" add_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.add_time!=null">
+							when id=#{item.add_time,jdbcType=INTEGER}
+							then #{item.add_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!--更新时间-->
+				<trim prefix=" update_time = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.update_time!=null">
+							when id=#{item.update_time,jdbcType=INTEGER}
+							then #{item.update_time,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_order_express
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopOrderExpress">
+		delete from nideshop_order_express
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>

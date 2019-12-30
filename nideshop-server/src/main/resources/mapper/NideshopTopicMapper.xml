@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--专题推荐-->
+<mapper namespace="com.wdk.nideshop.storage.dao.NideshopTopicMapper">
+	<!--返回值映射-->
+	<resultMap id="BaseResultMap" type="com.wdk.nideshop.model.NideshopTopic">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="title" jdbcType="VARCHAR" property="title"/>
+		<result column="content" jdbcType="LONGVARCHAR" property="content"/>
+		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+		<result column="item_pic_url" jdbcType="VARCHAR" property="item_pic_url"/>
+		<result column="subtitle" jdbcType="VARCHAR" property="subtitle"/>
+		<result column="topic_category_id" jdbcType="INTEGER" property="topic_category_id"/>
+		<result column="price_info" jdbcType="DECIMAL" property="price_info"/>
+		<result column="read_count" jdbcType="VARCHAR" property="read_count"/>
+		<result column="scene_pic_url" jdbcType="VARCHAR" property="scene_pic_url"/>
+		<result column="topic_template_id" jdbcType="INTEGER" property="topic_template_id"/>
+		<result column="topic_tag_id" jdbcType="INTEGER" property="topic_tag_id"/>
+		<result column="sort_order" jdbcType="INTEGER" property="sort_order"/>
+		<result column="is_show" jdbcType="TINYINT" property="is_show"/>
+	</resultMap>
+	<!--查询数据库表开始-->
+	<sql id="Base_Tables_Sql">
+		nideshop_topic
+	</sql>
+	<!--查询数据库表结束-->
+	<!--查询字段开始-->
+	<sql id="Base_Column_Sql">
+		id,title,content,avatar,item_pic_url,subtitle,topic_category_id,price_info,read_count,scene_pic_url,
+		topic_template_id,topic_tag_id,sort_order,is_show
+	</sql>
+	<!--查询字段结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="title != null and title != ''">
+			and title=#{title,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			and content=#{content,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="item_pic_url != null and item_pic_url != ''">
+			and item_pic_url=#{item_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="subtitle != null and subtitle != ''">
+			and subtitle=#{subtitle,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="topic_category_id != null">
+			and topic_category_id=#{topic_category_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="price_info != null">
+			and price_info=#{price_info,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="read_count != null and read_count != ''">
+			and read_count=#{read_count,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="scene_pic_url != null and scene_pic_url != ''">
+			and scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="topic_template_id != null">
+			and topic_template_id=#{topic_template_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="topic_tag_id != null">
+			and topic_tag_id=#{topic_tag_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--查询条件开始-->
+	<sql id="Base_Where_Db_Sql">
+		<!---->
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="title != null and title != ''">
+			and title=#{title,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			and content=#{content,jdbcType=LONGVARCHAR}
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			and avatar=#{avatar,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="item_pic_url != null and item_pic_url != ''">
+			and item_pic_url=#{item_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="subtitle != null and subtitle != ''">
+			and subtitle=#{subtitle,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="topic_category_id != null">
+			and topic_category_id=#{topic_category_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="price_info != null">
+			and price_info=#{price_info,jdbcType=DECIMAL}
+		</if>
+		<!---->
+		<if test="read_count != null and read_count != ''">
+			and read_count=#{read_count,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="scene_pic_url != null and scene_pic_url != ''">
+			and scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR}
+		</if>
+		<!---->
+		<if test="topic_template_id != null">
+			and topic_template_id=#{topic_template_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="topic_tag_id != null">
+			and topic_tag_id=#{topic_tag_id,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			and sort_order=#{sort_order,jdbcType=INTEGER}
+		</if>
+		<!---->
+		<if test="is_show != null">
+			and is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+	</sql>
+	<!--查询条件结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMapReturnMap" parameterType="java.util.Map" resultType="java.util.Map">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Db_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectListByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="list" parameterType="com.wdk.nideshop.model.NideshopTopic" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据条件查询列表开始-->
+	<select id="count" parameterType="com.wdk.nideshop.model.NideshopTopic" resultType="java.lang.Integer">
+		select count(*)
+
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--新增表数据开始-->
+	<insert id="insert" parameterType="com.wdk.nideshop.model.NideshopTopic">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_topic (
+			title,content,avatar,
+			item_pic_url,subtitle,topic_category_id,
+			price_info,read_count,scene_pic_url,
+			topic_template_id,topic_tag_id,sort_order,
+			is_show
+		)
+		values (
+			
+			#{title,jdbcType=VARCHAR},#{content,jdbcType=LONGVARCHAR},#{avatar,jdbcType=VARCHAR},
+			#{item_pic_url,jdbcType=VARCHAR},#{subtitle,jdbcType=VARCHAR},#{topic_category_id,jdbcType=INTEGER},
+			#{price_info,jdbcType=DECIMAL},#{read_count,jdbcType=VARCHAR},#{scene_pic_url,jdbcType=VARCHAR},
+			#{topic_template_id,jdbcType=INTEGER},#{topic_tag_id,jdbcType=INTEGER},#{sort_order,jdbcType=INTEGER},
+			#{is_show,jdbcType=TINYINT}
+		)
+	
+	</insert>
+	<!--新增表数据结束-->
+	<!--新增表不为空数据开始-->
+	<insert id="insertSelective" parameterType="com.wdk.nideshop.model.NideshopTopic">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		insert into nideshop_topic (
+		<!---->
+		<if test="title != null and title != ''">
+			title=#{title,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			content=#{content,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="item_pic_url != null and item_pic_url != ''">
+			item_pic_url=#{item_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="subtitle != null and subtitle != ''">
+			subtitle=#{subtitle,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="topic_category_id != null">
+			topic_category_id,
+		</if>
+		<!---->
+		<if test="price_info != null">
+			price_info,
+		</if>
+		<!---->
+		<if test="read_count != null and read_count != ''">
+			read_count=#{read_count,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="scene_pic_url != null and scene_pic_url != ''">
+			scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="topic_template_id != null">
+			topic_template_id,
+		</if>
+		<!---->
+		<if test="topic_tag_id != null">
+			topic_tag_id,
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			sort_order,
+		</if>
+		<!---->
+		<if test="is_show != null">
+			is_show,
+		</if>
+		)
+		values (
+		<!---->
+		<if test="title != null and title != ''">
+			title=#{title,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="content != null and content != ''">
+			content=#{content,jdbcType=LONGVARCHAR},
+		</if>
+		<!---->
+		<if test="avatar != null and avatar != ''">
+			avatar=#{avatar,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="item_pic_url != null and item_pic_url != ''">
+			item_pic_url=#{item_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="subtitle != null and subtitle != ''">
+			subtitle=#{subtitle,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="topic_category_id != null">
+			#{topic_category_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="price_info != null">
+			#{price_info,jdbcType=DECIMAL},
+		</if>
+		<!---->
+		<if test="read_count != null and read_count != ''">
+			read_count=#{read_count,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="scene_pic_url != null and scene_pic_url != ''">
+			scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR},
+		</if>
+		<!---->
+		<if test="topic_template_id != null">
+			#{topic_template_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="topic_tag_id != null">
+			#{topic_tag_id,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="sort_order != null">
+			#{sort_order,jdbcType=INTEGER},
+		</if>
+		<!---->
+		<if test="is_show != null">
+			#{is_show,jdbcType=TINYINT},
+		</if>
+		)
+	
+	</insert>
+	<!--新增表不为空数据结束-->
+	<!--批量新增表数据开始-->
+	<insert id="batchInsert" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list != null and list.size != 0">
+			insert into nideshop_topic (
+				title,content,avatar,
+				item_pic_url,subtitle,topic_category_id,
+				price_info,read_count,scene_pic_url,
+				topic_template_id,topic_tag_id,sort_order,
+				is_show
+			)
+			values
+			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.title,jdbcType=VARCHAR},#{item.content,jdbcType=LONGVARCHAR},#{item.avatar,jdbcType=VARCHAR},
+				#{item.item_pic_url,jdbcType=VARCHAR},#{item.subtitle,jdbcType=VARCHAR},#{item.topic_category_id,jdbcType=INTEGER},
+				#{item.price_info,jdbcType=DECIMAL},#{item.read_count,jdbcType=VARCHAR},#{item.scene_pic_url,jdbcType=VARCHAR},
+				#{item.topic_template_id,jdbcType=INTEGER},#{item.topic_tag_id,jdbcType=INTEGER},#{item.sort_order,jdbcType=INTEGER},
+				#{item.is_show,jdbcType=TINYINT}
+				)
+			</foreach>
+		</if>
+	</insert>
+	<!--批量新增表数据结束-->
+	<!--根据条件查询列表开始-->
+	<select id="selectByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopTopic" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_Sql"/>
+		from  
+		<include refid="Base_Tables_Sql"/>
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</select>
+	<!--根据条件查询列表结束-->
+	<!--根据主键更新数据开始-->
+	<update id="updateByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopTopic">
+		update nideshop_topic
+		set  
+			title=#{title,jdbcType=VARCHAR},
+			content=#{content,jdbcType=LONGVARCHAR},
+			avatar=#{avatar,jdbcType=VARCHAR},
+			item_pic_url=#{item_pic_url,jdbcType=VARCHAR},
+			subtitle=#{subtitle,jdbcType=VARCHAR},
+			topic_category_id=#{topic_category_id,jdbcType=INTEGER},
+			price_info=#{price_info,jdbcType=DECIMAL},
+			read_count=#{read_count,jdbcType=VARCHAR},
+			scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR},
+			topic_template_id=#{topic_template_id,jdbcType=INTEGER},
+			topic_tag_id=#{topic_tag_id,jdbcType=INTEGER},
+			sort_order=#{sort_order,jdbcType=INTEGER},
+			is_show=#{is_show,jdbcType=TINYINT}
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新数据结束-->
+	<!--根据主键更新不为空数据开始-->
+	<!--专题推荐更新不为空-->
+	<update id="updateSelectiveByPrimaryKey" parameterType="com.wdk.nideshop.model.NideshopTopic">
+		update nideshop_topic
+		<set>
+			<!---->
+			<if test="title != null and title != ''">
+				title=#{title,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="content != null and content != ''">
+				content=#{content,jdbcType=LONGVARCHAR},
+			</if>
+			<!---->
+			<if test="avatar != null and avatar != ''">
+				avatar=#{avatar,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="item_pic_url != null and item_pic_url != ''">
+				item_pic_url=#{item_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="subtitle != null and subtitle != ''">
+				subtitle=#{subtitle,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="topic_category_id != null">
+				topic_category_id=#{topic_category_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="price_info != null">
+				price_info=#{price_info,jdbcType=DECIMAL},
+			</if>
+			<!---->
+			<if test="read_count != null and read_count != ''">
+				read_count=#{read_count,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="scene_pic_url != null and scene_pic_url != ''">
+				scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR},
+			</if>
+			<!---->
+			<if test="topic_template_id != null">
+				topic_template_id=#{topic_template_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="topic_tag_id != null">
+				topic_tag_id=#{topic_tag_id,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="sort_order != null">
+				sort_order=#{sort_order,jdbcType=INTEGER},
+			</if>
+			<!---->
+			<if test="is_show != null">
+				is_show=#{is_show,jdbcType=TINYINT},
+			</if>
+		</set>
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</update>
+	<!--根据主键更新不为空数据结束-->
+	<!--根据主键存在就更新，不存在就新增开始-->
+	<!--专题推荐批量新增，存在就更新，不存在就插入-->
+	<insert id="batchInsertUpdate" parameterType="java.util.List">
+		<selectKey keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID()</selectKey>
+		<if test="list !=null and list.size != 0">
+			insert into  nideshop_topic(
+				title,content,avatar,
+				item_pic_url,subtitle,topic_category_id,
+				price_info,read_count,scene_pic_url,
+				topic_template_id,topic_tag_id,sort_order,
+				is_show
+			)
+			values 
+ 			<foreach collection="list" item="item" index="index" separator=",">
+				(
+				#{item.title,jdbcType=VARCHAR},#{item.content,jdbcType=LONGVARCHAR},#{item.avatar,jdbcType=VARCHAR},
+				#{item.item_pic_url,jdbcType=VARCHAR},#{item.subtitle,jdbcType=VARCHAR},#{item.topic_category_id,jdbcType=INTEGER},
+				#{item.price_info,jdbcType=DECIMAL},#{item.read_count,jdbcType=VARCHAR},#{item.scene_pic_url,jdbcType=VARCHAR},
+				#{item.topic_template_id,jdbcType=INTEGER},#{item.topic_tag_id,jdbcType=INTEGER},#{item.sort_order,jdbcType=INTEGER},
+				#{item.is_show,jdbcType=TINYINT})
+			</foreach>
+				ON DUPLICATE KEY UPDATE
+				title=#{title,jdbcType=VARCHAR},
+				content=#{content,jdbcType=LONGVARCHAR},
+				avatar=#{avatar,jdbcType=VARCHAR},
+				item_pic_url=#{item_pic_url,jdbcType=VARCHAR},
+				subtitle=#{subtitle,jdbcType=VARCHAR},
+				topic_category_id=#{topic_category_id,jdbcType=INTEGER},
+				price_info=#{price_info,jdbcType=DECIMAL},
+				read_count=#{read_count,jdbcType=VARCHAR},
+				scene_pic_url=#{scene_pic_url,jdbcType=VARCHAR},
+				topic_template_id=#{topic_template_id,jdbcType=INTEGER},
+				topic_tag_id=#{topic_tag_id,jdbcType=INTEGER},
+				sort_order=#{sort_order,jdbcType=INTEGER},
+				is_show=#{is_show,jdbcType=TINYINT}
+		</if>
+	</insert>
+	<!--根据主键存在就更新，不存在就新增结束-->
+	<!--批量更新开始-->
+	<update id="batchUpdate">
+		<if test="list != null and list.size != 0">
+			update nideshop_topic
+			<trim prefix="set" suffixOverrides=",">
+				<!---->
+				<trim prefix=" title = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.title!=null">
+							when id=#{item.title,jdbcType=INTEGER}
+							then #{item.title,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" content = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.content!=null">
+							when id=#{item.content,jdbcType=INTEGER}
+							then #{item.content,jdbcType=LONGVARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" avatar = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.avatar!=null">
+							when id=#{item.avatar,jdbcType=INTEGER}
+							then #{item.avatar,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" item_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.item_pic_url!=null">
+							when id=#{item.item_pic_url,jdbcType=INTEGER}
+							then #{item.item_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" subtitle = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.subtitle!=null">
+							when id=#{item.subtitle,jdbcType=INTEGER}
+							then #{item.subtitle,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" topic_category_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.topic_category_id!=null">
+							when id=#{item.topic_category_id,jdbcType=INTEGER}
+							then #{item.topic_category_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" price_info = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.price_info!=null">
+							when id=#{item.price_info,jdbcType=INTEGER}
+							then #{item.price_info,jdbcType=DECIMAL}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" read_count = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.read_count!=null">
+							when id=#{item.read_count,jdbcType=INTEGER}
+							then #{item.read_count,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" scene_pic_url = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.scene_pic_url!=null">
+							when id=#{item.scene_pic_url,jdbcType=INTEGER}
+							then #{item.scene_pic_url,jdbcType=VARCHAR}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" topic_template_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.topic_template_id!=null">
+							when id=#{item.topic_template_id,jdbcType=INTEGER}
+							then #{item.topic_template_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" topic_tag_id = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.topic_tag_id!=null">
+							when id=#{item.topic_tag_id,jdbcType=INTEGER}
+							then #{item.topic_tag_id,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" sort_order = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.sort_order!=null">
+							when id=#{item.sort_order,jdbcType=INTEGER}
+							then #{item.sort_order,jdbcType=INTEGER}
+						</if>
+					</foreach>
+				</trim>
+				<!---->
+				<trim prefix=" is_show = case " suffix="end,">
+					<foreach collection="list" item="item" index="index">
+						<if test="item.is_show!=null">
+							when id=#{item.is_show,jdbcType=INTEGER}
+							then #{item.is_show,jdbcType=TINYINT}
+						</if>
+					</foreach>
+				</trim>
+			</trim>
+			<where>
+				<foreach collection="list" separator="or" item="item" index="index">
+					id=#{item.id,jdbcType=INTEGER}
+				</foreach>
+			</where>
+		</if>
+	</update>
+	<!--批量更新结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from nideshop_topic
+		<!--主键查询-->
+		<where>id=#{id,jdbcType=INTEGER}</where>
+	</delete>
+	<!--删除表数据结束-->
+	<!--删除表数据开始-->
+	<delete id="deleteBySelect" parameterType="com.wdk.nideshop.model.NideshopTopic">
+		delete from nideshop_topic
+		<where>
+			<include refid="Base_Where_Sql"/>
+		</where>
+	</delete>
+	<!--删除表数据结束-->
+</mapper>
